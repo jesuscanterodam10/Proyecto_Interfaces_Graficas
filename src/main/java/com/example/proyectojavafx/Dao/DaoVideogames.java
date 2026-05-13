@@ -6,6 +6,6 @@ public interface DaoVideogames {
     void insertVideogame(Videogames videogame);
     boolean removeVideogame(int id);
     boolean updateVideogame(Videogames videogame);
-    void searchForID(int id);
-    void showAll();
+    Videogames searchForID(int id);
+    String showAll();
 }

@@ -18,7 +18,7 @@ public class DaoUserImplement implements DaoUser {
             pStatement.setString(1, user.getUser());
             pStatement.setString(2, user.getPassword());
             pStatement.executeUpdate();
-            System.out.println();
+            System.out.println("Sentencia de usuario ejecutada");
         } catch (SQLException e) {
             System.err.println("No se ha ejecutado la sentencia");
         }
