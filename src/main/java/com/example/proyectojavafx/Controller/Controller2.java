@@ -1,9 +1,33 @@
 package com.example.proyectojavafx.Controller;
 
+import com.example.proyectojavafx.ApplicationJava;
+import com.example.proyectojavafx.Dao.impl.DaoVideogamesImplement;
+import com.example.proyectojavafx.DataBase.ConexionSingleton;
+import com.example.proyectojavafx.Models.Videogames;
+import com.example.proyectojavafx.Services.VideogameServices;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import javax.swing.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Controller2 {
+    VideogameServices vS = new VideogameServices();
+    DaoVideogamesImplement dao = new DaoVideogamesImplement();
+
     @FXML
     private Label userText;
 
@@ -12,7 +36,175 @@ public class Controller2 {
     }
 
     @FXML
-    public void addVidegame(){
+    private TextField idAdd;
+
+    @FXML
+    private TextField nameAdd;
+
+    @FXML
+    private TextField storageMb;
+
+    @FXML
+    private DatePicker realaseDate;
+
+    @FXML
+    private ComboBox pegi;
+
+    @FXML
+    private TextField price;
+
+//Añadir
+    @FXML
+    public void addVideogame(){
+        try {
+            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("add.fxml"));
+            Scene scene = new Scene(fxLoad.load(), 400, 300);
+
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.show();
+
+        }catch (NumberFormatException | IOException e){
+            JOptionPane.showMessageDialog(null,e);
+        }
 
     }
+    @FXML
+    public void buttonForAdd() {
+        try {
+            vS.addVideogame(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
+                    Double.parseDouble(storageMb.getText()), realaseDate.getValue(),
+                    pegi.getValue().toString(), Double.parseDouble(price.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    //Eliminar
+    @FXML
+    public void deleteByID() {
+        try {
+            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("delete.fxml"));
+            Scene scene = new Scene(fxLoad.load(), 300, 200);
+
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (NumberFormatException | IOException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    @FXML
+    public void buttonForDelete() {
+        try {
+            vS.deleteVideogame(Integer.parseInt(idAdd.getText()));
+            JOptionPane.showMessageDialog(null, "Se ha ejecutado eso");
+
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    //Actualizar
+
+    @FXML
+    public void updateGame(){
+        try {
+            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("update.fxml"));
+            Scene scene = new Scene(fxLoad.load(), 400, 300);
+
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.show();
+
+        }catch (NumberFormatException | IOException e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+
+    }
+    @FXML
+    public void buttonForUpdate() {
+        try {
+            Videogames v1 = dao.searchForID(Integer.parseInt(idAdd.getText()));
+            System.out.println(v1);
+
+            vS.videogameUpdate(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
+                    Double.parseDouble(storageMb.getText()), v1.getRealaseDate(),
+                    pegi.getValue().toString(), Double.parseDouble(price.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    //Buscar
+    @FXML
+    public void searchID(){
+        try {
+            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("idSearch.fxml"));
+            Scene scene = new Scene(fxLoad.load(), 400, 300);
+
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.show();
+
+        }catch (NumberFormatException | IOException e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+
+    }
+    @FXML
+    public Label caract;
+
+    @FXML
+    public void buttonForID() {
+
+        Videogames v1 = dao.searchForID(Integer.parseInt(idAdd.getText()));
+
+        try {
+            caract.setText(v1.toString());
+        } catch (Exception e) {
+            caract.setText("No se encuentra");
+        }
+
+    }
+
+    @FXML
+    public void show(){
+        try {
+            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("allShow.fxml"));
+            Scene scene = new Scene(fxLoad.load(), 400, 400);
+
+            Stage stage = new Stage();
+
+
+            stage.setScene(scene);
+            stage.show();
+
+        }catch (NumberFormatException | IOException e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+
+    }
+    public String lista(){
+        List<Videogames> videogames = new ArrayList<>();
+        Connection conec = ConexionSingleton.getInstance();
+        String sql = "SELECT COUNT(*) FROM videogames";
+        try (Statement st = conec.createStatement()){
+            int a = st.executeUpdate(sql);
+            for (int i = 0; i < a; i++) {
+
+            }
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+
+
+        return null;
+    }
+
 }

@@ -29,13 +29,13 @@ public class DaoVideogamesImplement implements DaoVideogames {
 
     @Override
     public boolean removeVideogame(int id) {
-        sql = "DELETE videogames WHERE id = ?;";
+        sql = "DELETE FROM videogames WHERE id = ?;";
         try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
             pStatement.setInt(1, id);
             pStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.err.println("Sentencia no ejecutada");
+            System.err.println("Sentencia delete no ejecutada");
             return false;
         }
     }
@@ -43,7 +43,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
     @Override
     public boolean updateVideogame(Videogames videogame) {
         sql = """ 
-                UPDATE videogame SET 
+                UPDATE videogames SET 
                 name = ?,
                 storage = ?,
                 pegi = ?,
@@ -55,6 +55,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setDouble(2, videogame.getStorage());
             pStatement.setString(3, videogame.getPegi());
             pStatement.setDouble(4, videogame.getPrice());
+            pStatement.setInt(5, videogame.getId());
             pStatement.executeUpdate();
             System.out.println("Actualizando el videojuego");
             return true;

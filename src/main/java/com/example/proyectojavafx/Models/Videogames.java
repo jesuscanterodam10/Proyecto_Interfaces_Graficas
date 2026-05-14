@@ -75,4 +75,16 @@ public class Videogames {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+    @Override
+    public String toString() {
+        return "Videogames{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", storage=" + storage +
+                ", realaseDate=" + realaseDate +
+                ", pegi='" + pegi + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

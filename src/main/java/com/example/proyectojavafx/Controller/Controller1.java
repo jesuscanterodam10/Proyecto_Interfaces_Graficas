@@ -37,7 +37,7 @@ public class Controller1 {
              confirm.setText("Usuario correcto");
 
              FXMLLoader loaderXML =new FXMLLoader(ApplicationJava.class.getResource("menu.fxml"));
-             Scene scne = new Scene(loaderXML.load(),400,800);
+             Scene scne = new Scene(loaderXML.load(),400,350);
 
              Controller2 controller2 = loaderXML.getController();
 
