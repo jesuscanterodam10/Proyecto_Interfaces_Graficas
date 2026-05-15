@@ -18,8 +18,10 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -181,7 +183,6 @@ public class Controller2 {
 
             Stage stage = new Stage();
 
-
             stage.setScene(scene);
             stage.show();
 
@@ -190,21 +191,44 @@ public class Controller2 {
         }
 
     }
-    public String lista(){
-        List<Videogames> videogames = new ArrayList<>();
-        Connection conec = ConexionSingleton.getInstance();
-        String sql = "SELECT COUNT(*) FROM videogames";
-        try (Statement st = conec.createStatement()){
-            int a = st.executeUpdate(sql);
-            for (int i = 0; i < a; i++) {
+    @FXML
+    private Label all;
 
+    @FXML
+    public void lista(){
+        List<Videogames> videogamesList = new ArrayList<>();
+        Connection conec = ConexionSingleton.getInstance();
+        String sql = "SELECT * FROM videogames";
+        try (Statement st = conec.createStatement()){
+            ResultSet r = st.executeQuery(sql);
+            int id = 99;
+            String name = " ";
+            double storge = 99;
+            LocalDate l = null;
+            String pegi = " ";
+            double price = 99;
+
+
+            while(r.next()){
+                id = r.getInt(1);
+                name = r.getString(2);
+                storge = r.getDouble(3);
+                l = LocalDate.parse(r.getString(4));
+                pegi = r.getString(5);
+                price = r.getDouble(6);
+                videogamesList.add(new Videogames(id,name,storge,l,pegi,price));
             }
+            StringBuilder sb = new StringBuilder();
+
+            for (Videogames v : videogamesList) {
+                sb.append(v).append("\n");
+            }
+            all.setText(sb.toString());
+
+
         }catch (SQLException e){
             System.out.println(e);
         }
-
-
-        return null;
     }
 
 }
