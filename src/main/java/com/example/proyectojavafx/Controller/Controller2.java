@@ -6,6 +6,7 @@ import com.example.proyectojavafx.DataBase.ConexionSingleton;
 import com.example.proyectojavafx.Models.Videogames;
 import com.example.proyectojavafx.Services.VideogameServices;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,6 +30,7 @@ import java.util.List;
 public class Controller2 {
     VideogameServices vS = new VideogameServices();
     DaoVideogamesImplement dao = new DaoVideogamesImplement();
+    Connection conne = ConexionSingleton.getInstance();
 
     @FXML
     private Label userText;
@@ -55,12 +57,37 @@ public class Controller2 {
     @FXML
     private TextField price;
 
-//Añadir
+    @FXML
+    private ComboBox<Integer> comboxIds;
+
+    public void idShow(){
+        ComboBox<Integer> idContainer = new ComboBox<>();
+        List<Integer> i = new ArrayList<>();
+        String sql = """
+                     SELECT id FROM videogames;
+                     """;
+        try (Statement st = conne.createStatement()){
+            ResultSet setR = st.executeQuery(sql);
+            while(setR.next()){
+                i.add(setR.getInt(1));
+            }
+            idContainer.setItems(FXCollections.observableArrayList(i));
+            comboxIds.setItems(idContainer.getItems());
+        } catch (SQLException | RuntimeException e) {
+            System.err.println(e);
+        }
+    }
+    public void inicializate(){
+        idShow();
+    }
+
+
+    //Añadir
     @FXML
     public void addVideogame(){
         try {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("add.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 400, 300);
+            Scene scene = new Scene(fxLoad.load(), 400, 500);
 
             Stage stage = new Stage();
 
@@ -111,12 +138,14 @@ public class Controller2 {
     }
 
     //Actualizar
-
     @FXML
     public void updateGame(){
         try {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("update.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 400, 300);
+            Scene scene = new Scene(fxLoad.load(), 400, 400);
+
+            Controller2 c = fxLoad.getController();
+            c.inicializate();
 
             Stage stage = new Stage();
 
@@ -128,13 +157,14 @@ public class Controller2 {
         }
 
     }
+
     @FXML
     public void buttonForUpdate() {
         try {
-            Videogames v1 = dao.searchForID(Integer.parseInt(idAdd.getText()));
+            Videogames v1 = dao.searchForID(comboxIds.getValue());
             System.out.println(v1);
 
-            vS.videogameUpdate(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
+            vS.videogameUpdate(comboxIds.getValue(), nameAdd.getText(),
                     Double.parseDouble(storageMb.getText()), v1.getRealaseDate(),
                     pegi.getValue().toString(), Double.parseDouble(price.getText()));
         } catch (NumberFormatException e) {
@@ -149,6 +179,9 @@ public class Controller2 {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("idSearch.fxml"));
             Scene scene = new Scene(fxLoad.load(), 400, 300);
 
+            Controller2 c = fxLoad.getController();
+            c.inicializate();
+
             Stage stage = new Stage();
 
             stage.setScene(scene);
@@ -159,14 +192,13 @@ public class Controller2 {
         }
 
     }
+
     @FXML
     public Label caract;
 
     @FXML
     public void buttonForID() {
-
-        Videogames v1 = dao.searchForID(Integer.parseInt(idAdd.getText()));
-
+        Videogames v1 = dao.searchForID(comboxIds.getValue());
         try {
             caract.setText(v1.toString());
         } catch (Exception e) {

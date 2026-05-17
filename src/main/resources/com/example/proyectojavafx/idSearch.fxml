@@ -9,7 +9,8 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <TextField fx:id="idAdd" promptText="id" />
+    <ComboBox fx:id="comboxIds" />
+
     <Button onAction="#buttonForID" text="Buscar" />
     <Label fx:id="caract" text="..."/>
 </VBox>

@@ -1,0 +1,147 @@
+.root {
+        -fx-font-family: "Segoe UI", "Inter", sans-serif;
+        -fx-background-color: linear-gradient(to bottom right, #0f172a, #1e293b);
+        }
+
+        /* =========================
+        CONTENEDOR PRINCIPAL
+        ========================= */
+        .vbox {
+        -fx-background-color: rgba(255, 255, 255, 0.08);
+        -fx-background-radius: 22;
+        -fx-border-radius: 22;
+        -fx-border-color: rgba(255,255,255,0.10);
+        -fx-padding: 28;
+        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 25, 0.2, 0, 8);
+        }
+
+        /* =========================
+        TEXTFIELDS
+        ========================= */
+        .text-field {
+        -fx-background-color: rgba(255,255,255,0.12);
+        -fx-background-radius: 14;
+        -fx-border-radius: 14;
+        -fx-border-color: transparent;
+
+        -fx-text-fill: white;
+        -fx-prompt-text-fill: #cbd5e1;
+
+        -fx-font-size: 14px;
+
+        -fx-padding: 12 14;
+
+        -fx-pref-height: 42;
+        }
+
+        .text-field:focused {
+        -fx-border-color: #38bdf8;
+        -fx-border-width: 2;
+        -fx-background-color: rgba(255,255,255,0.16);
+
+        -fx-effect: dropshadow(gaussian, rgba(56,189,248,0.35), 12, 0.2, 0, 0);
+        }
+
+        /* =========================
+        DATE PICKER
+        ========================= */
+        .date-picker {
+        -fx-background-color: rgba(255,255,255,0.12);
+        -fx-background-radius: 14;
+        -fx-border-radius: 14;
+        -fx-border-color: transparent;
+        }
+
+        .date-picker .text-field {
+        -fx-background-color: transparent;
+        }
+
+        .date-picker:focused {
+        -fx-border-color: #38bdf8;
+        -fx-border-width: 2;
+        }
+
+        /* Botón calendario */
+        .date-picker .arrow-button {
+        -fx-background-color: transparent;
+        -fx-background-radius: 0 14 14 0;
+        }
+
+        .date-picker .arrow-button:hover {
+        -fx-background-color: rgba(255,255,255,0.08);
+        }
+
+        /* =========================
+        COMBOBOX
+        ========================= */
+        .combo-box {
+        -fx-background-color: rgba(255,255,255,0.12);
+        -fx-background-radius: 14;
+        -fx-border-radius: 14;
+        -fx-border-color: transparent;
+
+        -fx-pref-height: 42;
+        }
+
+        .combo-box:focused {
+        -fx-border-color: #38bdf8;
+        -fx-border-width: 2;
+        }
+
+        .combo-box .list-cell {
+        -fx-background-color: transparent;
+        -fx-text-fill: white;
+        -fx-font-size: 14px;
+        }
+
+        .combo-box-popup .list-view {
+        -fx-background-color: #1e293b;
+        -fx-background-radius: 12;
+        -fx-border-color: transparent;
+        }
+
+        .combo-box-popup .list-cell {
+        -fx-background-color: #1e293b;
+        -fx-text-fill: white;
+        }
+
+        .combo-box-popup .list-cell:hover {
+        -fx-background-color: #334155;
+        }
+
+        /* =========================
+        BOTÓN
+        ========================= */
+        .button {
+        -fx-background-color: linear-gradient(to right, #3b82f6, #06b6d4);
+        -fx-background-radius: 16;
+
+        -fx-text-fill: white;
+        -fx-font-size: 15px;
+        -fx-font-weight: bold;
+
+        -fx-padding: 12 24;
+
+        -fx-cursor: hand;
+
+        -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.45), 16, 0.3, 0, 4);
+        }
+
+        .button:hover {
+        -fx-background-color: linear-gradient(to right, #2563eb, #0891b2);
+        -fx-scale-x: 1.03;
+        -fx-scale-y: 1.03;
+        }
+
+        .button:pressed {
+        -fx-scale-x: 0.98;
+        -fx-scale-y: 0.98;
+        }
+
+        /* =========================
+        SCROLL / POPUPS
+        ========================= */
+        .context-menu {
+        -fx-background-color: #1e293b;
+        -fx-background-radius: 12;
+        }
