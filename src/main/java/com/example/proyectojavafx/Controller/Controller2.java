@@ -38,6 +38,10 @@ public class Controller2 {
     public void setTextA(String s){
         userText.setText("Usuario: " + s);
     }
+    public void setTextNoUser(String s){
+        userText.setText(s);
+    }
+
 
     @FXML
     private TextField idAdd;
@@ -89,7 +93,9 @@ public class Controller2 {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("add.fxml"));
             Scene scene = new Scene(fxLoad.load(), 400, 500);
 
-            Stage stage = new Stage();
+            Controller2 c = fxLoad.getController();
+            c.setTextNoUser(userText.getText());
+            Stage stage = (Stage) userText.getScene().getWindow();
 
             stage.setScene(scene);
             stage.show();
@@ -116,7 +122,10 @@ public class Controller2 {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("delete.fxml"));
             Scene scene = new Scene(fxLoad.load(), 300, 200);
 
-            Stage stage = new Stage();
+            Controller2 c = fxLoad.getController();
+            c.inicializate();
+            c.setTextNoUser(userText.getText());
+            Stage stage = (Stage) userText.getScene().getWindow();
 
             stage.setScene(scene);
             stage.show();
@@ -128,7 +137,7 @@ public class Controller2 {
     @FXML
     public void buttonForDelete() {
         try {
-            vS.deleteVideogame(Integer.parseInt(idAdd.getText()));
+            vS.deleteVideogame(comboxIds.getValue());
             JOptionPane.showMessageDialog(null, "Se ha ejecutado eso");
 
 
@@ -262,5 +271,43 @@ public class Controller2 {
             System.out.println(e);
         }
     }
+    @FXML
+    public void backButton(){
+        try {
+            FXMLLoader fLoader = new FXMLLoader(ApplicationJava.class.getResource("login.fxml"));
+            Scene scene = new Scene(fLoader.load(),400,400);
+
+            Controller1 c1 = fLoader.getController();
+            Stage stage = (Stage) userText.getScene().getWindow();
+
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+    }
+    @FXML
+    public void backButtonMenu(){
+        try {
+            FXMLLoader fLoader = new FXMLLoader(ApplicationJava.class.getResource("menu.fxml"));
+            Scene scene = new Scene(fLoader.load(),400,450);
+
+            Controller2 c2 = fLoader.getController();
+            c2.setTextNoUser(userText.getText());
+            Stage stage = (Stage) userText.getScene().getWindow();
+
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+    }
+
 
 }

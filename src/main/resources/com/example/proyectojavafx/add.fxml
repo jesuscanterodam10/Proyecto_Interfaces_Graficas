@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="499.0" prefWidth="255.0" spacing="20.0" stylesheets="@cs/add.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller2">
+<VBox alignment="CENTER" prefHeight="563.0" prefWidth="255.0" spacing="20.0" stylesheets="@cs/add.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller2">
 
 
 <padding>
@@ -32,6 +32,8 @@
     <TextField fx:id="price" promptText="Precio" />
 
     <Button onAction="#buttonForAdd" text="Insertar" />
+    <Button onAction="#backButtonMenu" prefWidth="92.0" text="menú" />
+   <Label fx:id="userText" textFill="WHITE" />
 
 
 

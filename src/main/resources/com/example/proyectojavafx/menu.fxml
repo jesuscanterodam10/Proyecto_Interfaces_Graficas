@@ -13,6 +13,6 @@
     <Button mnemonicParsing="false" onAction="#updateGame" prefHeight="25.0" prefWidth="341.0" text="Actualizar" />
     <Button mnemonicParsing="false" onAction="#searchID" prefHeight="25.0" prefWidth="341.0" text="Buscar" />
     <Button mnemonicParsing="false" onAction="#show" prefHeight="25.0" prefWidth="341.0" text="Mostrar" />
-    <Button mnemonicParsing="false" text="Volver" />
+    <Button mnemonicParsing="false" onAction="#backButton" text="Volver" />
     <Label fx:id="userText" />
 </VBox>
