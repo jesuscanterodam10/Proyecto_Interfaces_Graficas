@@ -10,5 +10,7 @@
     </padding>
       <Label fx:id="all" text="..." />
     <Button onAction="#lista" text="Mostrar"/>
+    <Button onAction="#backButtonMenu" prefWidth="92.0" text="menú" />
+    <Label fx:id="userText" textFill="blue" />
 
 </VBox>

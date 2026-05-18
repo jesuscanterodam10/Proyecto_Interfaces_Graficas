@@ -30,6 +30,9 @@
 
     <Button onAction="#buttonForUpdate" text="Actualizar" />
 
+    <Button onAction="#backButtonMenu" prefWidth="92.0" text="menú" />
+    <Label fx:id="userText" textFill="blue" />
+
 
 
 </VBox>

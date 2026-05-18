@@ -4,6 +4,8 @@ import com.example.proyectojavafx.ApplicationJava;
 import com.example.proyectojavafx.Models.User;
 import com.example.proyectojavafx.Services.CheckPasswordUser;
 import com.example.proyectojavafx.Services.CheckUser;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -37,7 +39,7 @@ public class Controller1 {
              confirm.setText("Usuario correcto");
 
              FXMLLoader loaderXML =new FXMLLoader(ApplicationJava.class.getResource("menu.fxml"));
-             Scene scne = new Scene(loaderXML.load(),400,450);
+             Scene scne = new Scene(loaderXML.load(),500,550);
 
              Controller2 controller2 = loaderXML.getController();
 
@@ -53,5 +55,9 @@ public class Controller1 {
          }
         }
         else {confirm.setText("Usuario incorrecto");}
+    }
+    @FXML
+    public void close(){
+        Platform.exit();
     }
 }

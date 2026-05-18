@@ -91,7 +91,7 @@ public class Controller2 {
     public void addVideogame(){
         try {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("add.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 400, 500);
+            Scene scene = new Scene(fxLoad.load(), 500, 600);
 
             Controller2 c = fxLoad.getController();
             c.setTextNoUser(userText.getText());
@@ -120,7 +120,7 @@ public class Controller2 {
     public void deleteByID() {
         try {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("delete.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 300, 200);
+            Scene scene = new Scene(fxLoad.load(), 400, 300);
 
             Controller2 c = fxLoad.getController();
             c.inicializate();
@@ -151,12 +151,12 @@ public class Controller2 {
     public void updateGame(){
         try {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("update.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 400, 400);
+            Scene scene = new Scene(fxLoad.load(), 500, 500);
 
             Controller2 c = fxLoad.getController();
             c.inicializate();
-
-            Stage stage = new Stage();
+            c.setTextNoUser(userText.getText());
+            Stage stage = (Stage) userText.getScene().getWindow();
 
             stage.setScene(scene);
             stage.show();
@@ -186,12 +186,12 @@ public class Controller2 {
     public void searchID(){
         try {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("idSearch.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 400, 300);
+            Scene scene = new Scene(fxLoad.load(), 500, 500);
 
             Controller2 c = fxLoad.getController();
             c.inicializate();
-
-            Stage stage = new Stage();
+            c.setTextNoUser(userText.getText());
+            Stage stage = (Stage) userText.getScene().getWindow();
 
             stage.setScene(scene);
             stage.show();
@@ -220,9 +220,11 @@ public class Controller2 {
     public void show(){
         try {
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("allShow.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 400, 400);
+            Scene scene = new Scene(fxLoad.load(), 500, 500);
 
-            Stage stage = new Stage();
+            Controller2 c = fxLoad.getController();
+            c.setTextNoUser(userText.getText());
+            Stage stage = (Stage) userText.getScene().getWindow();
 
             stage.setScene(scene);
             stage.show();
@@ -275,7 +277,7 @@ public class Controller2 {
     public void backButton(){
         try {
             FXMLLoader fLoader = new FXMLLoader(ApplicationJava.class.getResource("login.fxml"));
-            Scene scene = new Scene(fLoader.load(),400,400);
+            Scene scene = new Scene(fLoader.load(),500,500);
 
             Controller1 c1 = fLoader.getController();
             Stage stage = (Stage) userText.getScene().getWindow();
@@ -293,7 +295,7 @@ public class Controller2 {
     public void backButtonMenu(){
         try {
             FXMLLoader fLoader = new FXMLLoader(ApplicationJava.class.getResource("menu.fxml"));
-            Scene scene = new Scene(fLoader.load(),400,450);
+            Scene scene = new Scene(fLoader.load(),500,550);
 
             Controller2 c2 = fLoader.getController();
             c2.setTextNoUser(userText.getText());

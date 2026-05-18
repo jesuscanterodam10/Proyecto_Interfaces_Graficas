@@ -13,4 +13,6 @@
 
     <Button onAction="#buttonForID" text="Buscar" />
     <Label fx:id="caract" text="..."/>
+    <Button onAction="#backButtonMenu" prefWidth="92.0" text="menú" />
+    <Label fx:id="userText" textFill="blue" />
 </VBox>
