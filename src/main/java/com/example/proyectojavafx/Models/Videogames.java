@@ -78,13 +78,11 @@ public class Videogames {
 
     @Override
     public String toString() {
-        return "Videogames{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", storage=" + storage +
-                ", realaseDate=" + realaseDate +
-                ", pegi='" + pegi + '\'' +
-                ", price=" + price +
-                '}';
+        return "id: " + id +
+                ", Nombre: " + name + '\'' +
+                ", Almacenamiento: " + storage + "MB" +
+                ", Fecha de salida: " + realaseDate +
+                ", Edad minima (Pegi): " + pegi + '\'' +
+                ", Precio: " + price + "€";
     }
 }
