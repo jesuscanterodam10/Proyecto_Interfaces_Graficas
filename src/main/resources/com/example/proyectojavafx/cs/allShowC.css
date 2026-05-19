@@ -1,0 +1,98 @@
+.root{
+    -fx-font-family:"Segoe UI","Inter",sans-serif;
+    -fx-background-color:linear-gradient(to bottom right,#111827,#1e293b);
+}
+
+/* CONTENEDOR PRINCIPAL */
+.vbox{
+    -fx-background-color:rgba(255,255,255,.07);
+    -fx-background-radius:24;
+    -fx-border-radius:24;
+    -fx-border-color:rgba(255,255,255,.12);
+    -fx-padding:25;
+    -fx-spacing:18;
+
+    -fx-effect:dropshadow(gaussian,rgba(0,0,0,.35),22,.2,0,6);
+}
+
+/* CUADRO DEL TEXTO */
+.scroll-pane{
+    -fx-background-color:transparent;
+    -fx-background:transparent;
+
+    -fx-pref-width:420;
+    -fx-pref-height:260;
+
+    -fx-background-radius:18;
+    -fx-border-radius:18;
+    -fx-border-color:rgba(255,255,255,.15);
+
+    -fx-padding:10;
+}
+
+.scroll-pane .viewport{
+    -fx-background-color:rgba(255,255,255,.08);
+    -fx-background-radius:18;
+}
+
+/* TEXTO */
+.label{
+    -fx-text-fill:#f8fafc;
+    -fx-font-size:14px;
+
+    -fx-background-color:rgba(255,255,255,.05);
+    -fx-background-radius:16;
+
+    -fx-padding:18;
+
+    -fx-wrap-text:true;
+}
+
+/* SCROLL */
+.scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.scroll-bar:vertical .thumb{
+    -fx-background-color:#38bdf8;
+    -fx-background-radius:10;
+}
+
+.scroll-bar:vertical .track{
+    -fx-background-color:rgba(255,255,255,.08);
+    -fx-background-radius:10;
+}
+
+/* BOTONES */
+.button{
+    -fx-background-color:linear-gradient(to right,#2563eb,#06b6d4);
+    -fx-background-radius:14;
+
+    -fx-text-fill:white;
+    -fx-font-size:14px;
+    -fx-font-weight:bold;
+
+    -fx-padding:10 22;
+
+    -fx-cursor:hand;
+
+    -fx-effect:dropshadow(gaussian,rgba(37,99,235,.35),14,.2,0,4);
+}
+
+.button:hover{
+    -fx-background-color:linear-gradient(to right,#1d4ed8,#0891b2);
+
+    -fx-scale-x:1.03;
+    -fx-scale-y:1.03;
+}
+
+.button:pressed{
+    -fx-scale-x:.98;
+    -fx-scale-y:.98;
+}
+
+/* TEXTO INFERIOR */
+#userText{
+    -fx-text-fill:#93c5fd;
+    -fx-font-size:13px;
+}
