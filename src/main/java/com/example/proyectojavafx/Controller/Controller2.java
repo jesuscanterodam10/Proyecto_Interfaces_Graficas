@@ -153,8 +153,25 @@ public class Controller2 {
         try {
             vS.deleteVideogame(comboxIds.getValue());
             JOptionPane.showMessageDialog(null, "Se ha eliminado el dato seleccionado");
+            idShow();
+            if (!dataReviser()) {
+                try {
+                    FXMLLoader loaderXML =new FXMLLoader(ApplicationJava.class.getResource("menu.fxml"));
+                    Scene scne = new Scene(loaderXML.load(),500,550);
+
+                    Controller2 c = loaderXML.getController();
+
+                    c.setTextNoUser(userText.getText());
+                    Stage stage = (Stage) userText.getScene().getWindow();
+
+                    stage.setScene(scne);
+                    stage.show();
 
 
+                } catch (IOException e) {
+                    System.err.println(e);
+                }
+            }
         } catch (NullPointerException | NumberFormatException e) {
             warning(1);
         }
