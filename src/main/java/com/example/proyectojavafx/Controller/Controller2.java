@@ -4,6 +4,7 @@ import com.example.proyectojavafx.ApplicationJava;
 import com.example.proyectojavafx.Dao.impl.DaoVideogamesImplement;
 import com.example.proyectojavafx.DataBase.ConexionSingleton;
 import com.example.proyectojavafx.Models.Videogames;
+import com.example.proyectojavafx.Services.DataServiceController;
 import com.example.proyectojavafx.Services.VideogameServices;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -23,6 +24,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.proyectojavafx.Services.DataServiceController.dataReviser;
 
 
 public class Controller2 {
@@ -62,6 +65,12 @@ public class Controller2 {
     @FXML
     private ComboBox<Integer> comboxIds;
 
+    @FXML
+    public Label caract;
+
+    @FXML
+    private Label all;
+
     public void idShow(){
         ComboBox<Integer> idContainer = new ComboBox<>();
         List<Integer> i = new ArrayList<>();
@@ -76,7 +85,7 @@ public class Controller2 {
             idContainer.setItems(FXCollections.observableArrayList(i));
             comboxIds.setItems(idContainer.getItems());
         } catch (SQLException | RuntimeException e) {
-            System.err.println(e);
+            warning(4);
         }
     }
     public void inicializate(){
@@ -88,6 +97,7 @@ public class Controller2 {
     @FXML
     public void addVideogame(){
         try {
+
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("add.fxml"));
             Scene scene = new Scene(fxLoad.load(), 500, 600);
 
@@ -118,20 +128,24 @@ public class Controller2 {
     //Eliminar
     @FXML
     public void deleteByID() {
-        try {
-            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("delete.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 400, 300);
+        if (dataReviser()) {
+            try {
+                FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("delete.fxml"));
+                Scene scene = new Scene(fxLoad.load(), 400, 300);
 
-            Controller2 c = fxLoad.getController();
-            c.inicializate();
-            c.setTextNoUser(userText.getText());
-            Stage stage = (Stage) userText.getScene().getWindow();
+                Controller2 c = fxLoad.getController();
+                c.inicializate();
+                c.setTextNoUser(userText.getText());
+                Stage stage = (Stage) userText.getScene().getWindow();
 
-            stage.setScene(scene);
-            stage.show();
+                stage.setScene(scene);
+                stage.show();
 
-        } catch (NumberFormatException | IOException e) {
-            warning(2);
+            } catch (NumberFormatException | IOException e) {
+                warning(2);
+            }
+        }else {
+            warning(3);
         }
     }
     @FXML
@@ -149,22 +163,25 @@ public class Controller2 {
     //Actualizar
     @FXML
     public void updateGame(){
-        try {
-            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("update.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 500, 500);
+        if(dataReviser()) {
+            try {
+                FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("update.fxml"));
+                Scene scene = new Scene(fxLoad.load(), 500, 500);
 
-            Controller2 c = fxLoad.getController();
-            c.inicializate();
-            c.setTextNoUser(userText.getText());
-            Stage stage = (Stage) userText.getScene().getWindow();
+                Controller2 c = fxLoad.getController();
+                c.inicializate();
+                c.setTextNoUser(userText.getText());
+                Stage stage = (Stage) userText.getScene().getWindow();
 
-            stage.setScene(scene);
-            stage.show();
+                stage.setScene(scene);
+                stage.show();
 
-        }catch (NumberFormatException | IOException e){
-            JOptionPane.showMessageDialog(null,e);
+            } catch (NumberFormatException | IOException e) {
+                warning(4);
+            }
+        }else {
+            warning(3);
         }
-
     }
 
     @FXML
@@ -191,28 +208,30 @@ public class Controller2 {
     //Buscar
     @FXML
     public void searchID(){
-        try {
-            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("idSearch.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 500, 500);
+        if (dataReviser()) {
+            try {
+                FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("idSearch.fxml"));
+                Scene scene = new Scene(fxLoad.load(), 500, 500);
 
-            Controller2 c = fxLoad.getController();
-            c.inicializate();
-            c.setTextNoUser(userText.getText());
-            Stage stage = (Stage) userText.getScene().getWindow();
+                Controller2 c = fxLoad.getController();
+                c.inicializate();
+                c.setTextNoUser(userText.getText());
+                Stage stage = (Stage) userText.getScene().getWindow();
 
-            stage.setScene(scene);
-            stage.show();
+                stage.setScene(scene);
+                stage.show();
 
-        }catch (NullPointerException ex){
-            warning(1);
-        }catch (NumberFormatException | IOException e){
-            warning(2);
+            } catch (NullPointerException ex) {
+                warning(1);
+            } catch (NumberFormatException | IOException e) {
+                warning(2);
+            }
+        }else {
+            warning(3);
         }
-
     }
 
-    @FXML
-    public Label caract;
+
 
     @FXML
     public void buttonForID() {
@@ -231,26 +250,27 @@ public class Controller2 {
 
     @FXML
     public void show(){
-        try {
-            FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("allShow.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 500, 500);
+        if(dataReviser()) {
+            try {
+                FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("allShow.fxml"));
+                Scene scene = new Scene(fxLoad.load(), 500, 500);
 
-            Controller2 c = fxLoad.getController();
-            c.setTextNoUser(userText.getText());
-            Stage stage = (Stage) userText.getScene().getWindow();
+                Controller2 c = fxLoad.getController();
+                c.setTextNoUser(userText.getText());
+                Stage stage = (Stage) userText.getScene().getWindow();
 
-            stage.setScene(scene);
-            stage.show();
+                stage.setScene(scene);
+                stage.show();
 
-        }catch (NumberFormatException | IOException e){
-            JOptionPane.showMessageDialog(null,e);
-        }catch (NullPointerException ex){
-            warning(1);
+            } catch (NumberFormatException | IOException e) {
+                warning(4);
+            } catch (NullPointerException ex) {
+                warning(1);
+            }
+        }else {
+            warning(3);
         }
-
     }
-    @FXML
-    private Label all;
 
     @FXML
     public void lista(){
@@ -270,7 +290,7 @@ public class Controller2 {
             stage.show();
 
         } catch (IOException e) {
-            System.out.println(e);
+            warning(4);
         }
 
     }
@@ -289,14 +309,16 @@ public class Controller2 {
             stage.show();
 
         } catch (IOException e) {
-            System.out.println(e);
+            warning(4);
         }
 
     }
     public void warning(int errorNumber){
         switch (errorNumber) {
-            case 1 -> JOptionPane.showMessageDialog(null, "Faltan datos") ;
+            case 1 -> JOptionPane.showMessageDialog(null, "Faltan datos");
             case 2 -> JOptionPane.showMessageDialog(null, "Datos con formato no valido");
+            case 3 -> JOptionPane.showMessageDialog(null, "No hay datos, añade antes de hacer algo");
+            case 4 -> JOptionPane.showMessageDialog(null, "Esto no estaba previsto");
             default -> JOptionPane.showMessageDialog(null, "No debereia ver este mensaje");
         }
     }
