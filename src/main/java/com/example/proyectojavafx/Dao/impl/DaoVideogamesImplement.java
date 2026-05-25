@@ -4,6 +4,8 @@ import com.example.proyectojavafx.Dao.DaoVideogames;
 import com.example.proyectojavafx.DataBase.ConexionSingleton;
 import com.example.proyectojavafx.Models.Videogames;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,10 +25,9 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setString(5, videogame.getPegi());
             pStatement.setDouble(6, videogame.getPrice());
             pStatement.executeUpdate();
-            System.out.println("Sentencia de insertar videojuegos ejecutada de manera correcta");
+            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia");
         } catch (SQLException e) {
-
-            System.err.println("No se ha ejecutado la sentencia");
+            JOptionPane.showMessageDialog(null, "No se ha ejecutado la sentencia / Datos invalidos");
         }
     }
 
@@ -60,10 +61,11 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setDouble(4, videogame.getPrice());
             pStatement.setInt(5, videogame.getId());
             pStatement.executeUpdate();
-            System.out.println("Actualizando el videojuego");
+            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia (Juego actualizado)");
             return true;
         } catch (SQLException e) {
-            System.err.println("No se ha podido actualizar el videojuego");
+            JOptionPane.showMessageDialog(null,"No se ha ejecutado la sentencia (Juego no actualizado)");
+
             return false;
         }
     }

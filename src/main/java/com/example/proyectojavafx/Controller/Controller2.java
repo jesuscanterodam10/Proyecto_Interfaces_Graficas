@@ -98,19 +98,21 @@ public class Controller2 {
             stage.setScene(scene);
             stage.show();
 
+
         }catch (NumberFormatException | IOException e){
-            JOptionPane.showMessageDialog(null,e);
+            warning(2);
         }
 
     }
     @FXML
     public void buttonForAdd() {
+
         try {
             vS.addVideogame(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
                     Double.parseDouble(storageMb.getText()), realaseDate.getValue(),
                     pegi.getValue().toString(), Double.parseDouble(price.getText()));
-        } catch (NumberFormatException e) {
-            warning();
+        } catch (RuntimeException e) {
+            warning(1);
         }
     }
     //Eliminar
@@ -129,18 +131,18 @@ public class Controller2 {
             stage.show();
 
         } catch (NumberFormatException | IOException e) {
-            JOptionPane.showMessageDialog(null, e);
+            warning(2);
         }
     }
     @FXML
     public void buttonForDelete() {
         try {
             vS.deleteVideogame(comboxIds.getValue());
-            JOptionPane.showMessageDialog(null, "Se ha ejecutado eso");
+            JOptionPane.showMessageDialog(null, "Se ha eliminado el dato seleccionado");
 
 
         } catch (NullPointerException | NumberFormatException e) {
-            warning();
+            warning(1);
         }
     }
 
@@ -170,15 +172,19 @@ public class Controller2 {
         try {
             Videogames v1 = dao.searchForID(comboxIds.getValue());
             System.out.println(v1);
+
             if(Double.parseDouble(storageMb.getText()) <= 0){
-                throw new RuntimeException();
+                throw new NumberFormatException();
             }
 
             vS.videogameUpdate(comboxIds.getValue(), nameAdd.getText(),
                     Double.parseDouble(storageMb.getText()), v1.getRealaseDate(),
                     pegi.getValue().toString(), Double.parseDouble(price.getText()));
-        } catch (RuntimeException e) {
-            warning();
+        } catch (NumberFormatException e) {
+            warning(2);
+        }
+        catch (RuntimeException e){
+            warning(1);
         }
     }
 
@@ -198,9 +204,9 @@ public class Controller2 {
             stage.show();
 
         }catch (NullPointerException ex){
-            warning();
+            warning(1);
         }catch (NumberFormatException | IOException e){
-            JOptionPane.showMessageDialog(null,e);
+            warning(2);
         }
 
     }
@@ -218,7 +224,7 @@ public class Controller2 {
                 caract.setText("No se encuentra");
             }
         } catch (NullPointerException e) {
-            warning();
+            warning(1);
         }
 
     }
@@ -239,7 +245,7 @@ public class Controller2 {
         }catch (NumberFormatException | IOException e){
             JOptionPane.showMessageDialog(null,e);
         }catch (NullPointerException ex){
-            warning();
+            warning(1);
         }
 
     }
@@ -287,8 +293,12 @@ public class Controller2 {
         }
 
     }
-    public void warning(){
-        JOptionPane.showMessageDialog(null, "Faltan datos");
+    public void warning(int errorNumber){
+        switch (errorNumber) {
+            case 1 -> JOptionPane.showMessageDialog(null, "Faltan datos") ;
+            case 2 -> JOptionPane.showMessageDialog(null, "Datos con formato no valido");
+            default -> JOptionPane.showMessageDialog(null, "No debereia ver este mensaje");
+        }
     }
 
 

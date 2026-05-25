@@ -26,7 +26,7 @@ public class Tables {
                CREATE TABLE videogames (
                id NUMERIC NOT NULL PRIMARY KEY check (id > -1),
                name TEXT NOT NULL,
-               storage NUMERIC NOT NULL check (id >= 000.1),
+               storage NUMERIC NOT NULL check (storage >= 000.1),
                realaseDate TEXT NOT NULL,
                pegi TEXT CHECK ( pegi IN ('18', '16', '12', '7', '3', 'TP')) NOT NULL,
                price NUMERIC NOT NULL check ( price > -1 )
