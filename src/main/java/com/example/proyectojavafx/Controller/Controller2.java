@@ -170,6 +170,9 @@ public class Controller2 {
         try {
             Videogames v1 = dao.searchForID(comboxIds.getValue());
             System.out.println(v1);
+            if(Double.parseDouble(storageMb.getText()) <= 0){
+                throw new RuntimeException();
+            }
 
             vS.videogameUpdate(comboxIds.getValue(), nameAdd.getText(),
                     Double.parseDouble(storageMb.getText()), v1.getRealaseDate(),
