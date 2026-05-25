@@ -26,7 +26,7 @@ public class VideogameServices {
     public Videogames idSearch(int id){
         return dao.searchForID(id);
     }
-    public String mostrar() {
+    public String showVs() {
         return dao.showAll();
     }
 }
