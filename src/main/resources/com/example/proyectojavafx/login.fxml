@@ -12,5 +12,5 @@
     <PasswordField fx:id="introPassword" promptText="Contraseña...." />
     <Label fx:id="confirm" text="..." />
     <Button onAction="#logButton" text="log in" />
-    <Button onAction="#close" text="GET OUT!!!" />
+    <Button onAction="#close" text="Salir" />
 </VBox>
