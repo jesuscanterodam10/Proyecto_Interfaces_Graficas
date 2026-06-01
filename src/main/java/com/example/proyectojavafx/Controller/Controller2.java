@@ -99,11 +99,12 @@ public class Controller2 {
         try {
 
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("add.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 1600, 200);
+            Scene scene = new Scene(fxLoad.load(), 1600, 400);
 
             Controller2 c = fxLoad.getController();
             c.setTextNoUser(userText.getText());
             Stage stage = (Stage) userText.getScene().getWindow();
+            stage.setResizable(false);
 
             stage.setScene(scene);
             stage.show();
@@ -137,6 +138,7 @@ public class Controller2 {
                 c.inicializate();
                 c.setTextNoUser(userText.getText());
                 Stage stage = (Stage) userText.getScene().getWindow();
+                stage.setResizable(false);
 
                 stage.setScene(scene);
                 stage.show();
@@ -163,6 +165,7 @@ public class Controller2 {
 
                     c.setTextNoUser(userText.getText());
                     Stage stage = (Stage) userText.getScene().getWindow();
+                    stage.setResizable(false);
 
                     stage.setScene(scne);
                     stage.show();
@@ -189,6 +192,7 @@ public class Controller2 {
                 c.inicializate();
                 c.setTextNoUser(userText.getText());
                 Stage stage = (Stage) userText.getScene().getWindow();
+                stage.setResizable(false);
 
                 stage.setScene(scene);
                 stage.show();
@@ -234,6 +238,7 @@ public class Controller2 {
                 c.inicializate();
                 c.setTextNoUser(userText.getText());
                 Stage stage = (Stage) userText.getScene().getWindow();
+                stage.setResizable(false);
 
                 stage.setScene(scene);
                 stage.show();
@@ -270,11 +275,12 @@ public class Controller2 {
         if(dataReviser()) {
             try {
                 FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("allShow.fxml"));
-                Scene scene = new Scene(fxLoad.load(), 500, 500);
+                Scene scene = new Scene(fxLoad.load(), 300, 500);
 
                 Controller2 c = fxLoad.getController();
                 c.setTextNoUser(userText.getText());
                 Stage stage = (Stage) userText.getScene().getWindow();
+                stage.setResizable(false);
 
                 stage.setScene(scene);
                 stage.show();
@@ -301,7 +307,7 @@ public class Controller2 {
 
             Controller1 c1 = fLoader.getController();
             Stage stage = (Stage) userText.getScene().getWindow();
-
+            stage.setResizable(false);
 
             stage.setScene(scene);
             stage.show();
@@ -320,7 +326,7 @@ public class Controller2 {
             Controller2 c2 = fLoader.getController();
             c2.setTextNoUser(userText.getText());
             Stage stage = (Stage) userText.getScene().getWindow();
-
+            stage.setResizable(false);
 
             stage.setScene(scene);
             stage.show();
@@ -350,7 +356,7 @@ public class Controller2 {
 
 
         }catch (SQLException e){
-
+            warning(999);
         }
 
     }

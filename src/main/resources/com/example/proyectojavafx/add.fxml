@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<VBox alignment="CENTER" spacing="20"
-      stylesheets="@cs/add.css"
-      xmlns="http://javafx.com/javafx/17.0.12"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.proyectojavafx.Controller.Controller2">
+<VBox alignment="CENTER" spacing="20" stylesheets="@cs/add.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller2">
 
     <padding>
-        <Insets bottom="20" left="20" right="20" top="20"/>
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
     <HBox alignment="CENTER" spacing="10">
         <TextField fx:id="idAdd" promptText="id (1,2,3...)" />
-        <Button text="Id.Random" onAction="#numberRandom"/>
+        <Button onAction="#numberRandom" text="Id.Random" />
 
         <TextField fx:id="nameAdd" promptText="Nombre del juego..." />
         <TextField fx:id="storageMb" promptText="MB de almc (1,2,3...)" />
@@ -39,10 +35,10 @@
     </HBox>
 
     <HBox alignment="CENTER" spacing="20">
-        <Button text="Insertar" onAction="#buttonForAdd"/>
-        <Button text="Menú" onAction="#backButtonMenu"/>
+        <Button onAction="#buttonForAdd" text="Insertar" />
     </HBox>
+     <Button onAction="#backButtonMenu" text="Menú" />
 
-    <Label fx:id="userText" textFill="WHITE"/>
+    <Label fx:id="userText" textFill="WHITE" />
 
 </VBox>

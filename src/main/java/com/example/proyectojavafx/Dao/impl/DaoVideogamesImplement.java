@@ -118,9 +118,11 @@ public class DaoVideogamesImplement implements DaoVideogames {
                 videogamesList.add(new Videogames(id,name,storge,l,pegi,price));
             }
             StringBuilder sb = new StringBuilder();
+            sb.append("=======================").append("\n");
 
             for (Videogames v : videogamesList) {
                 sb.append(v).append("\n");
+                sb.append("=======================").append("\n");
             }
             return sb.toString();
 

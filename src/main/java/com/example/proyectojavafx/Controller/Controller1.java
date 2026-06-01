@@ -45,6 +45,7 @@ public class Controller1 {
 
              controller2.setTextA(introUser.getText());
              Stage stage = (Stage) confirm.getScene().getWindow();
+             stage.setResizable(false);
 
              stage.setScene(scne);
              stage.show();
