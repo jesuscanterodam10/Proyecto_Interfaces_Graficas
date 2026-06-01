@@ -6,9 +6,9 @@ import java.sql.Statement;
 
 public class Tables {
     public static void main(String[] args) {
-
         Connection connection = ConexionSingleton.getInstance();
-        /*String sql = """
+
+        String sql = """
                         CREATE TABLE login (
                         user TEXT NOT NULL PRIMARY KEY,
                         password TEXT NOT NULL
@@ -21,8 +21,8 @@ public class Tables {
         } catch (SQLException e) {
             System.err.println("Comando no ejecutado");
         }
-*/
-         String sql = """
+
+        sql = """
                CREATE TABLE videogames (
                id NUMERIC NOT NULL PRIMARY KEY check (id > -1),
                name TEXT NOT NULL,

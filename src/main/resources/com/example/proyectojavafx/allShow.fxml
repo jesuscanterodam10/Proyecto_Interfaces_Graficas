@@ -13,7 +13,7 @@
             <Label fx:id="all" text="..." wrapText="true" />
         </content>
     </ScrollPane>
-    <Button onAction="#lista" text="Mostrar" />
+    <Button onAction="#list" text="Mostrar" />
     <Button onAction="#backButtonMenu" prefWidth="92.0" text="menú" />
     <Label fx:id="userText" textFill="blue" />
 

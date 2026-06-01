@@ -4,7 +4,6 @@ import com.example.proyectojavafx.ApplicationJava;
 import com.example.proyectojavafx.Dao.impl.DaoVideogamesImplement;
 import com.example.proyectojavafx.DataBase.ConexionSingleton;
 import com.example.proyectojavafx.Models.Videogames;
-import com.example.proyectojavafx.Services.DataServiceController;
 import com.example.proyectojavafx.Services.VideogameServices;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -24,6 +23,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static com.example.proyectojavafx.Services.DataServiceController.dataReviser;
 
@@ -99,7 +99,7 @@ public class Controller2 {
         try {
 
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("add.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 500, 600);
+            Scene scene = new Scene(fxLoad.load(), 1600, 200);
 
             Controller2 c = fxLoad.getController();
             c.setTextNoUser(userText.getText());
@@ -290,7 +290,7 @@ public class Controller2 {
     }
 
     @FXML
-    public void lista(){
+    public void list(){
         all.setText(vS.showVs());
     }
     @FXML
@@ -339,6 +339,22 @@ public class Controller2 {
             default -> JOptionPane.showMessageDialog(null, "No debereia ver este mensaje");
         }
     }
+
+    public void numberRandom(){
+        String sql = "SELECT id FROM videogames";
+        try (Statement st = conne.createStatement()){
+            Random random = new Random();
+            int i = random.nextInt(2147483646) + 1;
+
+            idAdd.setText(String.valueOf(i));
+
+
+        }catch (SQLException e){
+
+        }
+
+    }
+
 
 
 }
