@@ -122,6 +122,8 @@ public class Controller2 {
             vS.addVideogame(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
                     Double.parseDouble(storageMb.getText()), realaseDate.getValue(),
                     pegi.getValue().toString(), Double.parseDouble(price.getText()));
+
+            cleaner();
         } catch (RuntimeException e) {
             warning(1);
         }
@@ -218,6 +220,8 @@ public class Controller2 {
             vS.videogameUpdate(comboxIds.getValue(), nameAdd.getText(),
                     Double.parseDouble(storageMb.getText()), v1.getRealaseDate(),
                     pegi.getValue().toString(), Double.parseDouble(price.getText()));
+
+            cleanerUpdate();
         } catch (NumberFormatException e) {
             warning(2);
         }
@@ -359,6 +363,23 @@ public class Controller2 {
             warning(999);
         }
 
+    }
+
+    public void cleaner(){
+        idAdd.clear();
+        nameAdd.clear();
+        realaseDate.setValue(null);
+        pegi.setValue(null);
+        storageMb.clear();
+        price.clear();
+    }
+
+    public void cleanerUpdate(){
+        comboxIds.setValue(null);
+        nameAdd.clear();
+        pegi.setValue(null);
+        storageMb.clear();
+        price.clear();
     }
 
 

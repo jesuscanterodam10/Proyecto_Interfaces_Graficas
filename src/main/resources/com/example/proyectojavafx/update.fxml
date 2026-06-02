@@ -6,12 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="494.0" prefWidth="308.0" spacing="20.0" stylesheets="@cs/UpdateCs.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller2">
+<VBox alignment="CENTER" prefHeight="355.0" prefWidth="826.0" spacing="20.0" stylesheets="@cs/UpdateCs.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller2">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+    <Label style="-fx-font-size: 30px" text="Actualizar datos" textFill="BLUE" />
 
     <ComboBox fx:id="comboxIds" promptText="id" />
+   <HBox prefHeight="100.0" prefWidth="200.0">
     <TextField fx:id="nameAdd" promptText="Nombre del juego..." />
     <TextField fx:id="storageMb" promptText="Almacenamiento en mb" />
     <ComboBox fx:id="pegi" promptText="PEGI">
@@ -27,6 +29,7 @@
         </items>
     </ComboBox>
     <TextField fx:id="price" promptText="Precio" />
+    </HBox>
 
     <Button onAction="#buttonForUpdate" text="Actualizar" />
 

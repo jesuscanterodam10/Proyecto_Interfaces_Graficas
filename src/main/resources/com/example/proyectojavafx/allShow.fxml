@@ -8,6 +8,7 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <Label text="Datos" />
     <ScrollPane fitToWidth="true" prefHeight="260" prefWidth="420">
         <content>
             <Label fx:id="all" text="..." wrapText="true" />

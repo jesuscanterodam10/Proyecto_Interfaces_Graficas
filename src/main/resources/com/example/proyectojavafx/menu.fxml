@@ -8,6 +8,7 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <Label style="-fx-font-size: 40px; -fx-text-fill: black; -fx-font-weight: bold;" text="Menú" />
     <Button mnemonicParsing="false" onAction="#addVideogame" prefHeight="25.0" prefWidth="341.0" text="Insertar" />
     <Button mnemonicParsing="false" onAction="#deleteByID" prefHeight="25.0" prefWidth="341.0" text="Eliminar" />
     <Button mnemonicParsing="false" onAction="#updateGame" prefHeight="25.0" prefWidth="341.0" text="Actualizar" />
