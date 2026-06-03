@@ -12,7 +12,7 @@
 
     <ComboBox fx:id="comboxIds" promptText="id" />
 
-    <Button onAction="#buttonForID" text="Buscar" />
+    <Button onAction="#buttonForSearchID" text="Buscar" />
     <Label fx:id="caract" text="..." />
     <Button onAction="#backButtonMenu" prefWidth="92.0" text="menú" />
     <Label fx:id="userText" textFill="blue" />

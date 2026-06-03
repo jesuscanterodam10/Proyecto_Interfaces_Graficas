@@ -260,7 +260,7 @@ public class Controller2 {
 
 
     @FXML
-    public void buttonForID() {
+    public void buttonForSearchID() {
         try {
             Videogames v1 = vS.idSearch(comboxIds.getValue());
             try {
@@ -275,7 +275,7 @@ public class Controller2 {
     }
 
     @FXML
-    public void show(){
+    public void showAll(){
         if(dataReviser()) {
             try {
                 FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("allShow.fxml"));
@@ -369,7 +369,7 @@ public class Controller2 {
         idAdd.clear();
         nameAdd.clear();
         realaseDate.setValue(null);
-        pegi.setValue(null);
+        pegi.setValue("PEGI");
         storageMb.clear();
         price.clear();
     }
