@@ -1,0 +1,53 @@
+/* Estilo general del contenedor */
+.root {
+    -fx-background-color: #f4f7f6; /* Un gris muy suave casi blanco */
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* Estilo para los campos de texto y contraseña */
+.text-field, .password-field {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #dcdde1;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 10 15;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #95a5a6;
+    -fx-transition: all 0.3s;
+}
+
+/* Efecto cuando haces clic en el input */
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #3498db; /* Azul moderno */
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(52, 152, 219, 0.2), 10, 0, 0, 0);
+}
+
+/* Estilo para el botón */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 30;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9; /* Oscurece un poco al pasar el ratón */
+}
+
+.button:pressed {
+    -fx-scale-x: 0.95;
+    -fx-scale-y: 0.95;
+}
+
+/* Estilo para la etiqueta de confirmación */
+.label {
+    -fx-text-fill: #7f8c8d;
+    -fx-font-size: 13px;
+}
+
+

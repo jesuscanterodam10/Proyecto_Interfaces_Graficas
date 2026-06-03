@@ -1,0 +1,44 @@
+/* Estilo específico para los botones del menú */
+.button {
+    -fx-background-color: white;
+    -fx-text-fill: #2c3e50;
+    -fx-border-color: #dcdde1;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-padding: 12 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* Efecto al pasar el ratón: se ilumina y se eleva */
+.button:hover {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-border-color: #3498db;
+    -fx-translate-y: -2px; /* Efecto de levitación */
+    -fx-effect: dropshadow(three-pass-box, rgba(52, 152, 219, 0.3), 15, 0, 0, 5);
+}
+
+/* Botón "Volver" con un estilo diferenciado (más discreto o de peligro) */
+.button-back {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e74c3c;
+    -fx-border-color: #e74c3c;
+}
+
+.button-back:hover {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+/* Estilo para el nombre de usuario en la parte inferior */
+#userText {
+    -fx-font-size: 14px;
+    -fx-text-fill: #95a5a6;
+    -fx-font-style: italic;
+    -fx-padding: 10 0 0 0;
+}

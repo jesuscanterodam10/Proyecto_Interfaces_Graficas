@@ -1,0 +1,89 @@
+/* updateCs.css */
+
+.root {
+    -fx-background-color: linear-gradient(to bottom, #eff6ff, #dbeafe);
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Contenedor principal */
+.vbox {
+    -fx-background-color: white;
+    -fx-background-radius: 22;
+    -fx-padding: 28;
+    -fx-spacing: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 15, 0.2, 0, 5);
+}
+
+/* TextField */
+.text-field {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #60a5fa;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+    -fx-pref-width: 180px;
+}
+
+.text-field:focused {
+    -fx-border-color: #2563eb;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(37,99,235,0.25), 8, 0.2, 0, 2);
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #60a5fa;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 5;
+    -fx-font-size: 14px;
+    -fx-pref-width: 180px;
+}
+
+.combo-box:hover {
+    -fx-border-color: #2563eb;
+}
+
+/* Botones */
+.button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 14;
+    -fx-cursor: hand;
+    -fx-padding: 10 18 10 18;
+    -fx-pref-width: 140px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 6, 0.1, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.button:pressed {
+    -fx-background-color: #1e40af;
+}
+
+/* Botón menú diferente */
+.button:last-of-type {
+    -fx-background-color: #64748b;
+}
+
+.button:last-of-type:hover {
+    -fx-background-color: #475569;
+}
+
+/* Label de estado */
+#userText {
+    -fx-background-color: #eff6ff;
+    -fx-border-color: #3b82f6;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 8 12 8 12;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d4ed8;
+}

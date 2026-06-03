@@ -11,22 +11,16 @@ public class VideogameServices {
     public void addVideogame (int id, String name, double storage, LocalDate realaseDate, String pegi, double price) {
         dao.insertVideogame(new Videogames(id, name, storage, realaseDate, pegi, price));
     }
-    public boolean deleteVideogame (int id){
-        if(dao.removeVideogame(id)){
-            return true;
-        } else
-            return false;
+    public void deleteVideogame (int id){
+        dao.removeVideogame(id);
     }
-    public boolean videogameUpdate (int id, String name, double storage, LocalDate realaseDate, String pegi, double price) {
-        if (dao.updateVideogame(new Videogames(id, name, storage, realaseDate, pegi, price))) {
-            return true;
-        } else
-            return  false;
+    public void videogameUpdate (int id, String name, double storage, LocalDate realaseDate, String pegi, double price) {
+        dao.updateVideogame(new Videogames(id, name, storage, realaseDate, pegi, price));
     }
     public Videogames idSearch(int id){
         return dao.searchForID(id);
     }
-    public String mostrar() {
+    public String showVs() {
         return dao.showAll();
     }
 }

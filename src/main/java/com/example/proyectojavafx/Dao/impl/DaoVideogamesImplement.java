@@ -4,8 +4,12 @@ import com.example.proyectojavafx.Dao.DaoVideogames;
 import com.example.proyectojavafx.DataBase.ConexionSingleton;
 import com.example.proyectojavafx.Models.Videogames;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DaoVideogamesImplement implements DaoVideogames {
     Connection connection = ConexionSingleton.getInstance();
@@ -21,21 +25,21 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setString(5, videogame.getPegi());
             pStatement.setDouble(6, videogame.getPrice());
             pStatement.executeUpdate();
-            System.out.println("Sentencia de insertar videojuegos ejecutada de manera correcta");
+            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia");
         } catch (SQLException e) {
-            System.err.println("No se ha ejecutado la sentencia");
+            JOptionPane.showMessageDialog(null, "No se ha ejecutado la sentencia / Datos invalidos");
         }
     }
 
     @Override
     public boolean removeVideogame(int id) {
-        sql = "DELETE videogames WHERE id = ?;";
+        sql = "DELETE FROM videogames WHERE id = ?;";
         try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
             pStatement.setInt(1, id);
             pStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.err.println("Sentencia no ejecutada");
+            System.err.println("Sentencia delete no ejecutada");
             return false;
         }
     }
@@ -43,7 +47,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
     @Override
     public boolean updateVideogame(Videogames videogame) {
         sql = """ 
-                UPDATE videogame SET 
+                UPDATE videogames SET 
                 name = ?,
                 storage = ?,
                 pegi = ?,
@@ -55,11 +59,13 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setDouble(2, videogame.getStorage());
             pStatement.setString(3, videogame.getPegi());
             pStatement.setDouble(4, videogame.getPrice());
+            pStatement.setInt(5, videogame.getId());
             pStatement.executeUpdate();
-            System.out.println("Actualizando el videojuego");
+            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia (Juego actualizado)");
             return true;
         } catch (SQLException e) {
-            System.err.println("No se ha podido actualizar el videojuego");
+            JOptionPane.showMessageDialog(null,"No se ha ejecutado la sentencia (Juego no actualizado)");
+
             return false;
         }
     }
@@ -89,11 +95,40 @@ public class DaoVideogamesImplement implements DaoVideogames {
 
     @Override
     public String showAll() {
-        sql = "SELECT * FROM videogames;";
-        try (Statement statement = connection.createStatement()) {
-           return statement.executeQuery(sql).toString();
-        } catch (SQLException e) {
-            System.err.println("No se ha podido mostrar la informacion acerca del videojuego");
+        List<Videogames> videogamesList = new ArrayList<>();
+        Connection conec = ConexionSingleton.getInstance();
+        String sql = "SELECT * FROM videogames";
+        try (Statement st = conec.createStatement()){
+            ResultSet r = st.executeQuery(sql);
+            int id = 99;
+            String name = " ";
+            double storge = 99;
+            LocalDate l = null;
+            String pegi = " ";
+            double price = 99;
+
+
+            while(r.next()){
+                id = r.getInt(1);
+                name = r.getString(2);
+                storge = r.getDouble(3);
+                l = LocalDate.parse(r.getString(4));
+                pegi = r.getString(5);
+                price = r.getDouble(6);
+                videogamesList.add(new Videogames(id,name,storge,l,pegi,price));
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append("=======================").append("\n");
+
+            for (Videogames v : videogamesList) {
+                sb.append(v).append("\n");
+                sb.append("=======================").append("\n");
+            }
+            return sb.toString();
+
+
+        }catch (SQLException e){
+            System.out.println(e);
         }
         return null;
     }
