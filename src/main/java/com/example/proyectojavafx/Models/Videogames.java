@@ -78,11 +78,19 @@ public class Videogames {
 
     @Override
     public String toString() {
-        return  "id: " + id + '\n' +
-                "Nombre: " + name + '\n' +
-                "Almacenamiento: " + storage + "MB" + '\n' +
-                "Fecha de salida: " + realaseDate + '\n' +
-                "Edad minima (Pegi): " + pegi + '\n' +
-                "Precio: " + price + "€";
+        StringBuilder sB = new StringBuilder();
+        sB.append("id: ").append(id).append("\n")
+                .append("Nombre: ").append(name).append("\n")
+                .append("Almacenamiento: ").append(storage).append("MB").append("\n")
+                .append("Fecha de lanzamiento: ").append(realaseDate).append("\n")
+                .append("Edad minima (PEGI): ").append(pegi).append("\n");
+        if(price == 0){
+            sB.append("Precio: ").append("Gratis");
+        }else {
+            sB.append("Precio: ").append(price).append("€");
+        }
+
+
+        return sB.toString();
     }
 }

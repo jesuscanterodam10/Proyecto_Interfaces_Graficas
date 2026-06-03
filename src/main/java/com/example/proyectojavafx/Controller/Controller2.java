@@ -353,9 +353,21 @@ public class Controller2 {
     public void numberRandom(){
         String sql = "SELECT id FROM videogames";
         try (Statement st = conne.createStatement()){
+            boolean booleano = true;
             Random random = new Random();
             int i = random.nextInt(2147483646) + 1;
 
+            while(booleano) {
+                ResultSet rSt = st.executeQuery(sql);
+                while (rSt.next()) {
+                    int x = rSt.getInt(1);
+                    if (i == x) {
+                        i = random.nextInt(2147483646) + 1;
+                        break;
+                    }
+                    booleano = false;
+                }
+            }
             idAdd.setText(String.valueOf(i));
 
 
