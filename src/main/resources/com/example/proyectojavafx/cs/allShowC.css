@@ -139,3 +139,12 @@
 
     -fx-font-size: 12px;
 }
+
+.button {
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}

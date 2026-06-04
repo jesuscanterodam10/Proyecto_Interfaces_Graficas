@@ -145,3 +145,11 @@
 .combo-box .list-view {
     -fx-background-color: #1e293b;
 }
+.button {
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}

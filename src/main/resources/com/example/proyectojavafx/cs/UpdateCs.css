@@ -164,3 +164,12 @@
 
     -fx-fill: #e2e8f0;
 }
+
+.button {
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}
