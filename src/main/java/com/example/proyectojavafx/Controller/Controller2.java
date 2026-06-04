@@ -247,6 +247,10 @@ public class Controller2 {
             Videogames v1 = dao.searchForID(comboxIds.getValue());
             System.out.println(v1);
 
+            if (storageMb.getText().isEmpty()){
+                throw new RuntimeException();
+            }
+
             if(correctFormat(storageMb.getText()) <= 0){
                 throw new NumberFormatException();
             }

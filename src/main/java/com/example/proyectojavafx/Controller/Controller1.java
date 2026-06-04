@@ -34,12 +34,13 @@ public class Controller1 {
     @FXML
     private PasswordField introPassword;
 
-
     @FXML
     private TextField introUserA;
 
     @FXML
     private PasswordField introPasswordA;
+
+    int tries = 0;
 
     @FXML
     public void logButton(){
@@ -56,6 +57,7 @@ public class Controller1 {
 
         if (userCondition && passwordCondition){
          try {
+             tries = 0;
              confirm.setText("Usuario correcto");
 
              FXMLLoader loaderXML =new FXMLLoader(ApplicationJava.class.getResource("menu.fxml"));
@@ -75,21 +77,31 @@ public class Controller1 {
              System.err.println(e);
          }
         }
+        else if (tries > 6){
+            confirm.setText("Hay un boton para añadir usuario... por si no te has dado cuenta... (Usuario incorrecto)");
+        }
         else if (!warning){
             confirm.setText("Usuario incorrecto");
+            tries++;
         }
+
+
 
         if ((introUser.getText().isEmpty() || introPassword.getText().isEmpty()) && !warning){
             confirm.setText("...? ¿Es esto algun tipo de broma?");
+            tries++;
         }
         if (introUser.getText().isEmpty() && !warning){
             confirm.setText("Hey... ¿Como pones una contraseña antes que un usuario?");
+            tries++;
         }
         if(introPassword.getText().isEmpty() && !warning){
             confirm.setText("¿Usuario sin contraseña? Ojala...");
+            tries++;
         }
         if ((introUser.getText().isEmpty() && introPassword.getText().isEmpty()) && !warning){
             confirm.setText("...? ¿Es esto algun tipo de broma?");
+            tries++;
         }
 
     }
