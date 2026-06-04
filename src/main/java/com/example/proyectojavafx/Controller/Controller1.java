@@ -5,9 +5,7 @@ import com.example.proyectojavafx.Models.User;
 import com.example.proyectojavafx.Services.CheckPasswordUser;
 import com.example.proyectojavafx.Services.CheckUser;
 import com.example.proyectojavafx.Services.UserServices;
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -45,8 +43,16 @@ public class Controller1 {
 
     @FXML
     public void logButton(){
+        boolean warning = false;
+        if((introUser.getText().toLowerCase().contains("select") || introUser.getText().toLowerCase().contains("from")) || (introPassword.getText().toLowerCase().contains("select") || introPassword.getText().toLowerCase().contains("from"))){
+            confirm.setText("No");
+            cleaner();
+            warning = true;
+        }
+
         boolean userCondition = checkUser.checkUser(introUser.getText());
         boolean passwordCondition = checkPasswordUser.checkPassword(new User(introUser.getText(), introPassword.getText()));
+
 
         if (userCondition && passwordCondition){
          try {
@@ -69,7 +75,23 @@ public class Controller1 {
              System.err.println(e);
          }
         }
-        else {confirm.setText("Usuario incorrecto");}
+        else if (!warning){
+            confirm.setText("Usuario incorrecto");
+        }
+
+        if ((introUser.getText().isEmpty() || introPassword.getText().isEmpty()) && !warning){
+            confirm.setText("...? ¿Es esto algun tipo de broma?");
+        }
+        if (introUser.getText().isEmpty() && !warning){
+            confirm.setText("Hey... ¿Como pones una contraseña antes que un usuario?");
+        }
+        if(introPassword.getText().isEmpty() && !warning){
+            confirm.setText("¿Usuario sin contraseña? Ojala...");
+        }
+        if ((introUser.getText().isEmpty() && introPassword.getText().isEmpty()) && !warning){
+            confirm.setText("...? ¿Es esto algun tipo de broma?");
+        }
+
     }
     @FXML
     private void adminSecret(){
@@ -94,12 +116,24 @@ public class Controller1 {
     }
 
     public void addUser(){
-        if (userServices.adder(introUserA.getText(),introPasswordA.getText())) {
-            confirm.setText("Usuario añadido");
-        }else {
-            confirm.setText("Usuario no añadido");
+        if (introUserA.getText().toLowerCase().contains("select") || introUserA.getText().toLowerCase().contains("from") || (introPasswordA.getText().toLowerCase().contains("select") || introPasswordA.getText().toLowerCase().contains("from"))) {
+            confirm.setText("No");
+            cleanerA();
         }
-        cleaner();
+        else{
+                if (introUserA.getText().isEmpty() || introPasswordA.getText().isEmpty()) {
+                    confirm.setText("Como que falta algo, ¿no?");
+                } else {
+                    if (userServices.adder(introUserA.getText(), introPasswordA.getText())) {
+                        confirm.setText("Usuario añadido");
+                        System.out.println("Se ha añadido -- Usuario: " + introUserA.getText() + " Contraseña: " + introPasswordA.getText());
+                        cleanerA();
+                    } else {
+                        confirm.setText("Usuario no añadido");
+                    }
+                }
+        }
+
     }
 
     public void back(){
@@ -118,9 +152,18 @@ public class Controller1 {
             System.out.println(e);
         }
     }
-    public void cleaner(){
+    public void cleanerA(){
         introUserA.clear();
         introPasswordA.clear();
+    }
+
+    public void cleaner(){
+        if(!introUser.getText().isEmpty()) {
+            introUser.clear();
+        }
+        if(!introPassword.getText().isEmpty()) {
+            introPassword.clear();
+        }
     }
 
 }

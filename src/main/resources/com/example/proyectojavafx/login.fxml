@@ -41,7 +41,7 @@
                    promptText="Contraseña..."
                    styleClass="login-field"/>
 
-    <Label fx:id="confirm"
+    <Label fx:id="confirm" wrapText="true"
            styleClass="confirm-label"/>
 
     <Button text="LOG IN"

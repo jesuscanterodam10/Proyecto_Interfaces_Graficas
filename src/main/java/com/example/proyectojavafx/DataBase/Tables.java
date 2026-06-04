@@ -16,13 +16,13 @@ public class Tables {
                      """;
 
         try (Statement statement = connection.createStatement()) {
-            //statement.executeUpdate(sql);
+            statement.executeUpdate(sql);
             System.out.println("Comando ejecutado correctamente");
         } catch (SQLException e) {
             System.err.println("Comando no ejecutado");
         }
 
-        sql = """
+        /*sql = """
                CREATE TABLE videogames (
                id NUMERIC NOT NULL PRIMARY KEY check (id > -1),
                name TEXT NOT NULL,
@@ -32,13 +32,13 @@ public class Tables {
                price NUMERIC NOT NULL check ( price > -1 )
                );
                """;
-        //String sql = "DROP TABLE videogames;";
+        // sql = "DROP TABLE login;";
 
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
             System.out.println("Comando ejecutado correctamente");
         } catch (SQLException e) {
             System.err.println("Comando no ejecutado");
-        }
+        }*/
     }
 }
