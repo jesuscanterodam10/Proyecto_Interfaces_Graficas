@@ -14,8 +14,12 @@
    <Label text="Insertar datos" style="-fx-font-size: 30px" textFill="WHITE" />
 
     <HBox alignment="CENTER" spacing="10">
+        <CheckBox fx:id="autoIdSwitch"
+                  text="ID automático"
+                  onAction="#changerCheck"/>
+
         <TextField fx:id="idAdd" promptText="id (1,2,3...)" />
-        <Button onAction="#numberRandom" text="Id.Random" />
+        <Button fx:id="idRandom" onAction="#numberRandom" text="Id.Random" />
 
         <TextField fx:id="nameAdd" promptText="Nombre del juego..." />
         <TextField fx:id="storageMb" promptText="MB de almc (1,2,3...)" />

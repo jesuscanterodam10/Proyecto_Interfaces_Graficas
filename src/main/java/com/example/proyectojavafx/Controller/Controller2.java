@@ -9,10 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -29,6 +26,7 @@ import static com.example.proyectojavafx.Services.DataServiceController.dataRevi
 
 
 public class Controller2 {
+
     VideogameServices vS = new VideogameServices();
     Connection conne = ConexionSingleton.getInstance();
     DaoVideogamesImplement dao = new DaoVideogamesImplement();
@@ -43,6 +41,11 @@ public class Controller2 {
         userText.setText(s);
     }
 
+    @FXML
+    private CheckBox autoIdSwitch;
+
+    @FXML
+    private Button idRandom;
 
     @FXML
     private TextField idAdd;
@@ -88,6 +91,14 @@ public class Controller2 {
             warning(4);
         }
     }
+
+    public void changerCheck(){
+        idAdd.setOpacity(autoIdSwitch.isSelected() ? 0.5 : 1);
+        idAdd.setDisable(autoIdSwitch.isSelected());
+        idRandom.setOpacity(autoIdSwitch.isSelected() ? 0.5 : 1);
+
+    }
+
     public void inicializate(){
         idShow();
     }
@@ -115,15 +126,22 @@ public class Controller2 {
         }
 
     }
+
     @FXML
     public void buttonForAdd() {
 
         try {
-            vS.addVideogame(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
-                    Double.parseDouble(storageMb.getText()), realaseDate.getValue(),
-                    pegi.getValue().toString(), Double.parseDouble(price.getText()));
-
-            cleaner();
+            if (!autoIdSwitch.isSelected()) {
+                vS.addVideogame(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
+                        Double.parseDouble(storageMb.getText()), realaseDate.getValue(),
+                        pegi.getValue().toString(), Double.parseDouble(price.getText()));
+                cleaner();
+            }else {
+                vS.addWithAutoId(nameAdd.getText(),
+                        Double.parseDouble(storageMb.getText()), realaseDate.getValue(),
+                        pegi.getValue().toString(), Double.parseDouble(price.getText()));
+                cleaner2();
+            }
         } catch (RuntimeException e) {
             warning(1);
         }
@@ -346,39 +364,51 @@ public class Controller2 {
             case 2 -> JOptionPane.showMessageDialog(null, "Datos con formato no valido");
             case 3 -> JOptionPane.showMessageDialog(null, "No hay datos, añade antes de hacer algo");
             case 4 -> JOptionPane.showMessageDialog(null, "Esto no estaba previsto");
+            case 5 -> JOptionPane.showMessageDialog(null, "Generacion de id automatico habilitado, no puedes usar este boton...");
             default -> JOptionPane.showMessageDialog(null, "No debereia ver este mensaje");
         }
     }
 
     public void numberRandom(){
-        String sql = "SELECT id FROM videogames";
-        try (Statement st = conne.createStatement()){
-            boolean booleano = true;
-            Random random = new Random();
-            int i = random.nextInt(2147483646) + 1;
+        if(!autoIdSwitch.isSelected()) {
+            String sql = "SELECT id FROM videogames";
+            try (Statement st = conne.createStatement()) {
+                boolean booleano = true;
+                Random random = new Random();
+                int i = random.nextInt(2147483646) + 1;
 
-            while(booleano) {
-                ResultSet rSt = st.executeQuery(sql);
-                while (rSt.next()) {
-                    int x = rSt.getInt(1);
-                    if (i == x) {
-                        i = random.nextInt(2147483646) + 1;
-                        break;
+                while (booleano) {
+                    ResultSet rSt = st.executeQuery(sql);
+                    while (rSt.next()) {
+                        int x = rSt.getInt(1);
+                        if (i == x) {
+                            i = random.nextInt(2147483646) + 1;
+                            break;
+                        }
+                        booleano = false;
                     }
-                    booleano = false;
                 }
+                idAdd.setText(String.valueOf(i));
+
+
+            } catch (SQLException e) {
+                warning(999);
             }
-            idAdd.setText(String.valueOf(i));
-
-
-        }catch (SQLException e){
-            warning(999);
+        }else {
+            warning(5);
         }
 
     }
 
     public void cleaner(){
         idAdd.clear();
+        nameAdd.clear();
+        realaseDate.setValue(null);
+        pegi.setValue("PEGI");
+        storageMb.clear();
+        price.clear();
+    }
+    public void cleaner2(){
         nameAdd.clear();
         realaseDate.setValue(null);
         pegi.setValue("PEGI");

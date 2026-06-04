@@ -12,8 +12,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DaoVideogamesImplement implements DaoVideogames {
-    Connection connection = ConexionSingleton.getInstance();
+    static Connection connection = ConexionSingleton.getInstance();
     String sql;
+
+    @Override
+    public void insertarAutoIdGame(Videogames videogame){
+        sql = "INSERT INTO videogames VALUES (?, ?, ?, ?, ?, ?);";
+        try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
+            pStatement.setInt(1, idAuto());
+            pStatement.setString(2, videogame.getName());
+            pStatement.setDouble(3, videogame.getStorage());
+            pStatement.setString(4, videogame.getRealaseDate().toString());
+            pStatement.setString(5, videogame.getPegi());
+            pStatement.setDouble(6, videogame.getPrice());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se ha ejecutado la sentencia / Datos invalidos");
+        }
+    }
+
+    public static int idAuto() {
+        int j = 0;
+        String sql = "SELECT id FROM videogames";
+
+        try (Statement st = connection.createStatement()) {
+            ResultSet rSt = st.executeQuery(sql);
+            while (rSt.next()) {
+                int x = rSt.getInt(1);
+                for (; j < 2000; ) {
+                    if (j != x) {
+                        return j;
+                    }
+                    break;
+                }
+                j++;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return j;
+
+    }
+
+
     @Override
     public void insertVideogame(Videogames videogame) {
         sql = "INSERT INTO videogames VALUES (?, ?, ?, ?, ?, ?);";

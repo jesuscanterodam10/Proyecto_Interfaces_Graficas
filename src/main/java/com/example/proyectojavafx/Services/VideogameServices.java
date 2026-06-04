@@ -8,6 +8,9 @@ import java.time.LocalDate;
 
 public class VideogameServices {
     DaoVideogames dao = new DaoVideogamesImplement();
+    public void addWithAutoId(String name, double storage, LocalDate realaseDate, String pegi, double price){
+        dao.insertarAutoIdGame(new Videogames(0, name, storage, realaseDate, pegi, price));
+    }
     public void addVideogame (int id, String name, double storage, LocalDate realaseDate, String pegi, double price) {
         dao.insertVideogame(new Videogames(id, name, storage, realaseDate, pegi, price));
     }
