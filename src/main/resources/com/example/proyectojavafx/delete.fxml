@@ -4,14 +4,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="181.0" prefWidth="217.0" spacing="20.0" stylesheets="@cs/deleteCs.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller2">
+<VBox alignment="CENTER"
+      prefHeight="181.0"
+      prefWidth="217.0"
+      spacing="18.0"
+      stylesheets="@cs/deleteCs.css"
+      styleClass="delete-panel"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.proyectojavafx.Controller.Controller2">
+
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
-   <Label text="Eliminar" />
-    <ComboBox fx:id="comboxIds" promptText="id" />
-    <Button onAction="#buttonForDelete" text="Eliminar" />
-    <Button onAction="#backButtonMenu" text="menú" />
-    <Label fx:id="userText" textFill="BLUE" />
+
+    <Label text="ELIMINAR REGISTRO"
+           styleClass="delete-title"/>
+
+    <ComboBox fx:id="comboxIds"
+              promptText="Selecciona ID"
+              styleClass="input-field"/>
+
+    <Button text="ELIMINAR"
+            onAction="#buttonForDelete"
+            styleClass="danger-button"/>
+
+    <Button text="MENÚ"
+            onAction="#backButtonMenu"
+            styleClass="back-button"/>
+
+    <Label fx:id="userText"
+           styleClass="info-label"/>
 
 </VBox>

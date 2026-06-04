@@ -1,74 +1,184 @@
-/* searchCs.css */
-
 .root {
-    -fx-background-color: linear-gradient(to bottom, #eef4ff, #dbeafe);
-    -fx-font-family: "Segoe UI", sans-serif;
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom right,
+                    #0f172a,
+                    #111827,
+                    #1e293b
+            );
+
+    -fx-font-family: "Segoe UI";
 }
 
-/* Contenedor principal */
-.vbox {
-    -fx-background-color: white;
-    -fx-background-radius: 20;
-    -fx-padding: 25;
-    -fx-spacing: 18;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.18), 14, 0.2, 0, 4);
+/* PANEL */
+
+.search-panel {
+
+    -fx-background-color: rgba(17,24,39,0.95);
+
+    -fx-background-radius: 14;
+
+    -fx-border-color: #1e293b;
+    -fx-border-width: 1;
+
+    -fx-border-radius: 14;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.35),
+            20,
+            0,
+            0,
+            6
+    );
 }
 
-/* ComboBox */
+/* TITULO */
+
+.search-title {
+
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #f8fafc;
+}
+
+/* INPUTS */
+
+.input-field,
 .combo-box {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #3b82f6;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-padding: 6;
-    -fx-font-size: 14px;
-    -fx-pref-width: 160px;
-}
 
-.combo-box:hover {
-    -fx-border-color: #2563eb;
-}
+    -fx-background-color: #1e293b;
 
-/* Botones */
-.button {
-    -fx-background-color: #3b82f6;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
+
+    -fx-prompt-text-fill: #94a3b8;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-padding: 8;
+}
+
+/* COMBOBOX INTERNO */
+
+.combo-box .list-cell {
+
+    -fx-text-fill: white;
+
+    -fx-background-color: transparent;
+}
+
+/* BOTON BUSCAR */
+
+.primary-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #334155,
+                    #1e293b
+            );
+
+    -fx-text-fill: white;
+
     -fx-font-weight: bold;
-    -fx-background-radius: 12;
+
+    -fx-background-radius: 10;
+
+    -fx-border-color: #475569;
+
+    -fx-border-radius: 10;
+
     -fx-cursor: hand;
-    -fx-padding: 8 18 8 18;
-    -fx-pref-width: 120px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 6, 0.1, 0, 2);
 }
 
-.button:hover {
-    -fx-background-color: #2563eb;
+.primary-button:hover {
+
+    -fx-background-color:
+            #334155;
 }
 
-.button:pressed {
-    -fx-background-color: #1d4ed8;
-}
+/* RESULTADO */
 
-/* Label principal con cuadro resaltado */
-#caract {
-    -fx-background-color: #f8fafc;
-    -fx-border-color: #60a5fa;
-    -fx-border-width: 2;
-    -fx-border-radius: 12;
-    -fx-background-radius: 12;
-    -fx-padding: 12;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #1e3a8a;
-    -fx-effect: dropshadow(gaussian, rgba(59,130,246,0.25), 8, 0.2, 0, 2);
-    -fx-alignment: center;
-    -fx-min-width: 180px;
-}
+.result-label {
 
-/* Texto inferior */
-#userText {
+    -fx-text-fill: #e2e8f0;
+
     -fx-font-size: 13px;
+
+    -fx-padding: 5;
+}
+
+/* BOTON VOLVER */
+
+.back-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #273549,
+                    #1e293b
+            );
+
+    -fx-text-fill: #e2e8f0;
+
     -fx-font-weight: bold;
-    -fx-text-fill: #2563eb;
+
+    -fx-background-radius: 10;
+
+    -fx-border-color: #334155;
+}
+
+/* INFO */
+
+.info-label {
+
+    -fx-text-fill: #94a3b8;
+
+    -fx-font-size: 12px;
+}
+
+.combo-box .list-view {
+    -fx-background-color: #1e293b;
+}
+
+/* CAJA DE RESULTADOS */
+
+.result-box {
+
+    -fx-background-color: #1e293b;
+
+    -fx-background-radius: 12;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-border-radius: 12;
+
+    -fx-padding: 10;
+
+    -fx-min-height: 60;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.25),
+            10,
+            0,
+            0,
+            3
+    );
+}
+
+/* TEXTO DEL RESULTADO */
+
+.result-text {
+
+    -fx-text-fill: #e2e8f0;
+
+    -fx-font-size: 13px;
 }

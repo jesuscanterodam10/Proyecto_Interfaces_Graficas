@@ -13,7 +13,7 @@
 
 /* PANEL */
 
-.login-panel {
+.adduser-panel {
 
     -fx-background-color: rgba(17,24,39,0.95);
 
@@ -36,53 +36,45 @@
 
 /* TITULO */
 
-.login-title {
+.adduser-title {
 
-    -fx-font-size: 34px;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
 
     -fx-text-fill: #f8fafc;
-
-    -fx-effect: dropshadow(
-            gaussian,
-            rgba(255,255,255,0.08),
-            8,
-            0,
-            0,
-            1
-    );
 }
 
-/* CAMPOS */
+/* INPUTS */
 
-.login-field {
-
-    -fx-background-color: transparent;
+.input-field {
 
     -fx-control-inner-background: #1e293b;
 
     -fx-text-fill: white;
     -fx-prompt-text-fill: #94a3b8;
 
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
-
     -fx-border-color: #334155;
     -fx-border-width: 1;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
 
     -fx-padding: 10;
 
     -fx-font-size: 14px;
 }
-.login-field:focused {
 
-    -fx-border-color: #64748b;
+.input-field:focused {
 
     -fx-control-inner-background: #273549;
-}
-/* BOTON LOGIN */
 
-.login-button {
+    -fx-border-color: #64748b;
+    -fx-border-width: 1.5;
+}
+
+/* BOTON AÑADIR */
+
+.add-button {
 
     -fx-background-color:
             linear-gradient(
@@ -91,7 +83,7 @@
                     #1e293b
             );
 
-    -fx-text-fill: #f8fafc;
+    -fx-text-fill: white;
 
     -fx-font-weight: bold;
 
@@ -101,12 +93,10 @@
     -fx-border-color: #334155;
     -fx-border-width: 1;
 
-    -fx-padding: 10 25;
-
     -fx-cursor: hand;
 }
 
-.login-button:hover {
+.add-button:hover {
 
     -fx-background-color:
             linear-gradient(
@@ -114,49 +104,11 @@
                     #334155,
                     #273549
             );
-
-    -fx-text-fill: white;
 }
 
-/* BOTON REGISTRO */
+/* BOTON VOLVER */
 
-.secondary-button {
-
-    -fx-background-color:
-            linear-gradient(
-                    to bottom,
-                    #273549,
-                    #1e293b
-            );
-
-    -fx-text-fill: #cbd5e1;
-
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
-
-    -fx-border-color: #334155;
-    -fx-border-width: 1;
-
-    -fx-font-weight: bold;
-
-    -fx-cursor: hand;
-}
-
-.secondary-button:hover {
-
-    -fx-background-color:
-            linear-gradient(
-                    to bottom,
-                    #334155,
-                    #273549
-            );
-
-    -fx-text-fill: white;
-}
-
-/* BOTON SALIR */
-
-.exit-button {
+.back-button {
 
     -fx-background-color:
             linear-gradient(
@@ -173,10 +125,9 @@
     -fx-border-radius: 10;
 
     -fx-border-color: #7f1d1d;
-    -fx-border-width: 1;
 }
 
-.exit-button:hover {
+.back-button:hover {
 
     -fx-background-color:
             linear-gradient(
@@ -188,19 +139,6 @@
     -fx-text-fill: white;
 }
 
-/* SEPARADOR */
-
-.separator-line {
-
-    -fx-pref-width: 280;
-}
-
-.separator-line .line {
-
-    -fx-border-color: #334155;
-    -fx-border-width: 1;
-}
-
 /* MENSAJES */
 
 .confirm-label {
@@ -208,4 +146,17 @@
     -fx-text-fill: #94a3b8;
 
     -fx-font-size: 13px;
+}
+
+/* SEPARADOR */
+
+.separator-line {
+
+    -fx-pref-width: 300;
+}
+
+.separator-line .line {
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
 }

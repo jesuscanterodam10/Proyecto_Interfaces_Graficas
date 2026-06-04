@@ -110,7 +110,7 @@ public class Controller2 {
         try {
 
             FXMLLoader fxLoad = new FXMLLoader(ApplicationJava.class.getResource("add.fxml"));
-            Scene scene = new Scene(fxLoad.load(), 1600, 400);
+            Scene scene = new Scene(fxLoad.load(), 600, 500);
 
             Controller2 c = fxLoad.getController();
             c.setTextNoUser(userText.getText());
