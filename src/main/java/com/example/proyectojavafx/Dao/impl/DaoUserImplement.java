@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class DaoUserImplement implements DaoUser {
 
     @Override
-    public void insertUser(User user) {
+    public boolean insertUser(User user) {
         Connection connection = ConexionSingleton.getInstance();
         String sql = "INSERT INTO login VALUES (?, ?);";
         try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
@@ -19,8 +19,11 @@ public class DaoUserImplement implements DaoUser {
             pStatement.setString(2, user.getPassword());
             pStatement.executeUpdate();
             System.out.println("Sentencia de usuario ejecutada");
+            return true;
         } catch (SQLException e) {
             System.err.println("No se ha ejecutado la sentencia");
+            return false;
         }
+
     }
 }

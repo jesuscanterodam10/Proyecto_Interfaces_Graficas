@@ -7,7 +7,7 @@ import com.example.proyectojavafx.Models.User;
 public class UserServices {
     DaoUser dI = new DaoUserImplement();
 
-    public void adder(String name, String password){
-        dI.insertUser(new User(name,password));
+    public boolean adder(String name, String password){
+        return dI.insertUser(new User(name,password));
     }
 }

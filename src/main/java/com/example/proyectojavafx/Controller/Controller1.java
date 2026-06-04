@@ -94,8 +94,11 @@ public class Controller1 {
     }
 
     public void addUser(){
-        userServices.adder(introUserA.getText(),introPasswordA.getText());
-        confirm.setText("Usuario añadido");
+        if (userServices.adder(introUserA.getText(),introPasswordA.getText())) {
+            confirm.setText("Usuario añadido");
+        }else {
+            confirm.setText("Usuario no añadido");
+        }
     }
 
     public void back(){
