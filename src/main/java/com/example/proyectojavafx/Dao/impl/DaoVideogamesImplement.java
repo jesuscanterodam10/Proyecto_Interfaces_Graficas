@@ -40,7 +40,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
             ResultSet rSt = st.executeQuery(sql);
             while (rSt.next()) {
                 int x = rSt.getInt(1);
-                for (; j < 2000; ) {
+                for (; j < 2147483646; ) {
                     if (j != x) {
                         return j;
                     }
