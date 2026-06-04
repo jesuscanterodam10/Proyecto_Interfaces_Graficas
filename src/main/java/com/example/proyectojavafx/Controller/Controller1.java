@@ -99,6 +99,7 @@ public class Controller1 {
         }else {
             confirm.setText("Usuario no añadido");
         }
+        cleaner();
     }
 
     public void back(){
@@ -116,6 +117,10 @@ public class Controller1 {
         } catch (IOException e) {
             System.out.println(e);
         }
+    }
+    public void cleaner(){
+        introUserA.clear();
+        introPasswordA.clear();
     }
 
 }

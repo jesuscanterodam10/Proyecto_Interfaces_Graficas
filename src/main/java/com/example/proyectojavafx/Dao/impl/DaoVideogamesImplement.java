@@ -5,10 +5,10 @@ import com.example.proyectojavafx.DataBase.ConexionSingleton;
 import com.example.proyectojavafx.Models.Videogames;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class DaoVideogamesImplement implements DaoVideogames {
@@ -16,9 +16,11 @@ public class DaoVideogamesImplement implements DaoVideogames {
     String sql;
 
     @Override
-    public void insertarAutoIdGame(Videogames videogame){
+    public Videogames insertarAutoIdGame(Videogames videogame){
+        int i;
         sql = "INSERT INTO videogames VALUES (?, ?, ?, ?, ?, ?);";
         try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
+            i = idAuto();
             pStatement.setInt(1, idAuto());
             pStatement.setString(2, videogame.getName());
             pStatement.setDouble(3, videogame.getStorage());
@@ -27,9 +29,11 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setDouble(6, videogame.getPrice());
             pStatement.executeUpdate();
             JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia");
+            return new Videogames(i, videogame.getName() ,videogame.getStorage(), videogame.getRealaseDate(), videogame.getPegi(), videogame.getPrice());
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se ha ejecutado la sentencia / Datos invalidos");
         }
+        return null;
     }
 
     public static int idAuto() {
@@ -58,7 +62,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
 
 
     @Override
-    public void insertVideogame(Videogames videogame) {
+    public Videogames insertVideogame(Videogames videogame) {
         sql = "INSERT INTO videogames VALUES (?, ?, ?, ?, ?, ?);";
         try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
             pStatement.setInt(1, videogame.getId());
@@ -68,10 +72,12 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setString(5, videogame.getPegi());
             pStatement.setDouble(6, videogame.getPrice());
             pStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia");
-        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Se ha ejecutado la sentencia");
+            return new Videogames(videogame.getId(), videogame.getName(), videogame.getStorage(), videogame.getRealaseDate(), videogame.getPegi(), videogame.getPrice());
+        }catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se ha ejecutado la sentencia / Datos invalidos");
         }
+        return null;
     }
 
     @Override
@@ -163,7 +169,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
             StringBuilder sb = new StringBuilder();
             sb.append("=======================").append("\n");
 
-            for (Videogames v : videogamesList) {
+            for (Videogames v : videogamesList.stream().sorted(Comparator.comparing(Videogames::getId)).toList()) {
                 sb.append(v).append("\n");
                 sb.append("=======================").append("\n");
             }

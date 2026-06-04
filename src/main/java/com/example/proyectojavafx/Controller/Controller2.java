@@ -127,22 +127,38 @@ public class Controller2 {
 
     }
 
+    public Double correctFormat(String thing) {
+        String corrected;
+        try {
+            if (thing.contains(",")) {
+                corrected = thing.replace(",", ".");
+                return Double.parseDouble(corrected);
+            }
+        }catch (NumberFormatException e){
+            System.err.println(e);
+        }
+        return Double.parseDouble(thing);
+    }
+
     @FXML
     public void buttonForAdd() {
 
         try {
             if (!autoIdSwitch.isSelected()) {
                 vS.addVideogame(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
-                        Double.parseDouble(storageMb.getText()), realaseDate.getValue(),
-                        pegi.getValue().toString(), Double.parseDouble(price.getText()));
+                        correctFormat(storageMb.getText()), realaseDate.getValue(),
+                        pegi.getValue().toString(), correctFormat(price.getText()));
                 cleaner();
             }else {
                 vS.addWithAutoId(nameAdd.getText(),
-                        Double.parseDouble(storageMb.getText()), realaseDate.getValue(),
-                        pegi.getValue().toString(), Double.parseDouble(price.getText()));
+                        correctFormat(storageMb.getText()), realaseDate.getValue(),
+                        pegi.getValue().toString(), correctFormat(price.getText()));
                 cleaner2();
             }
-        } catch (RuntimeException e) {
+        }catch (NumberFormatException e){
+            warning(2);
+        }
+        catch (RuntimeException e) {
             warning(1);
         }
     }
@@ -231,13 +247,13 @@ public class Controller2 {
             Videogames v1 = dao.searchForID(comboxIds.getValue());
             System.out.println(v1);
 
-            if(Double.parseDouble(storageMb.getText()) <= 0){
+            if(correctFormat(storageMb.getText()) <= 0){
                 throw new NumberFormatException();
             }
 
             vS.videogameUpdate(comboxIds.getValue(), nameAdd.getText(),
-                    Double.parseDouble(storageMb.getText()), v1.getRealaseDate(),
-                    pegi.getValue().toString(), Double.parseDouble(price.getText()));
+                    correctFormat(storageMb.getText()), v1.getRealaseDate(),
+                    pegi.getValue().toString(), correctFormat(price.getText()));
 
             cleanerUpdate();
         } catch (NumberFormatException e) {
@@ -365,7 +381,7 @@ public class Controller2 {
             case 3 -> JOptionPane.showMessageDialog(null, "No hay datos, añade antes de hacer algo");
             case 4 -> JOptionPane.showMessageDialog(null, "Esto no estaba previsto");
             case 5 -> JOptionPane.showMessageDialog(null, "Generacion de id automatico habilitado, no puedes usar este boton...");
-            default -> JOptionPane.showMessageDialog(null, "No debereia ver este mensaje");
+            default -> JOptionPane.showMessageDialog(null, "No debereias ver este mensaje");
         }
     }
 
