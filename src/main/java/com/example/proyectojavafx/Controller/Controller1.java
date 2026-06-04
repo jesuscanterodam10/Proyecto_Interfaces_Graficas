@@ -4,8 +4,10 @@ import com.example.proyectojavafx.ApplicationJava;
 import com.example.proyectojavafx.Models.User;
 import com.example.proyectojavafx.Services.CheckPasswordUser;
 import com.example.proyectojavafx.Services.CheckUser;
+import com.example.proyectojavafx.Services.UserServices;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,11 +16,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class Controller1 {
     CheckUser checkUser = new CheckUser();
     CheckPasswordUser checkPasswordUser = new CheckPasswordUser();
+    UserServices userServices = new UserServices();
+
+    @FXML
+    private Button admin;
 
     @FXML
     private Label confirm;
@@ -28,6 +35,13 @@ public class Controller1 {
 
     @FXML
     private PasswordField introPassword;
+
+
+    @FXML
+    private TextField introUserA;
+
+    @FXML
+    private PasswordField introPasswordA;
 
     @FXML
     public void logButton(){
@@ -58,7 +72,47 @@ public class Controller1 {
         else {confirm.setText("Usuario incorrecto");}
     }
     @FXML
+    private void adminSecret(){
+        try {
+            FXMLLoader fLoader = new FXMLLoader(ApplicationJava.class.getResource("AdminAdder.fxml"));
+            Scene scn = new Scene(fLoader.load(), 500, 500);
+
+            Stage stage = (Stage) confirm.getScene().getWindow();
+            stage.setResizable(false);
+
+            stage.setScene(scn);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
+    @FXML
     public void close(){
         Platform.exit();
     }
+
+    public void addUser(){
+        userServices.adder(introUserA.getText(),introPasswordA.getText());
+        confirm.setText("Usuario añadido");
+    }
+
+    public void back(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(ApplicationJava.class.getResource("login.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 520, 540);
+
+            Stage stage = (Stage) confirm.getScene().getWindow();
+            stage.setResizable(false);
+
+
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
+
 }
