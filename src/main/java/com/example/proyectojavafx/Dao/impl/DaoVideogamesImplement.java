@@ -5,17 +5,64 @@ import com.example.proyectojavafx.DataBase.ConexionSingleton;
 import com.example.proyectojavafx.Models.Videogames;
 
 import javax.swing.*;
-import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class DaoVideogamesImplement implements DaoVideogames {
-    Connection connection = ConexionSingleton.getInstance();
+    static Connection connection = ConexionSingleton.getInstance();
     String sql;
+
     @Override
-    public void insertVideogame(Videogames videogame) {
+    public Videogames insertarAutoIdGame(Videogames videogame){
+        int i;
+        sql = "INSERT INTO videogames VALUES (?, ?, ?, ?, ?, ?);";
+        try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
+            i = idAuto();
+            pStatement.setInt(1, idAuto());
+            pStatement.setString(2, videogame.getName());
+            pStatement.setDouble(3, videogame.getStorage());
+            pStatement.setString(4, videogame.getRealaseDate().toString());
+            pStatement.setString(5, videogame.getPegi());
+            pStatement.setDouble(6, videogame.getPrice());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Se han introducido los datos");
+            return new Videogames(i, videogame.getName() ,videogame.getStorage(), videogame.getRealaseDate(), videogame.getPegi(), videogame.getPrice());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se han introducido los datos / Datos invalidos");
+        }
+        return null;
+    }
+
+    public static int idAuto() {
+        int j = 0;
+        String sql = "SELECT id FROM videogames";
+
+        try (Statement st = connection.createStatement()) {
+            ResultSet rSt = st.executeQuery(sql);
+            while (rSt.next()) {
+                int x = rSt.getInt(1);
+                for (; j < 2147483646; ) {
+                    if (j != x) {
+                        return j;
+                    }
+                    break;
+                }
+                j++;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return j;
+
+    }
+
+
+    @Override
+    public Videogames insertVideogame(Videogames videogame) {
         sql = "INSERT INTO videogames VALUES (?, ?, ?, ?, ?, ?);";
         try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
             pStatement.setInt(1, videogame.getId());
@@ -25,10 +72,12 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setString(5, videogame.getPegi());
             pStatement.setDouble(6, videogame.getPrice());
             pStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se ha ejecutado la sentencia / Datos invalidos");
+            JOptionPane.showMessageDialog(null, "Se han introducido los datos");
+            return new Videogames(videogame.getId(), videogame.getName(), videogame.getStorage(), videogame.getRealaseDate(), videogame.getPegi(), videogame.getPrice());
+        }catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se han introducido los datos / Datos invalidos");
         }
+        return null;
     }
 
     @Override
@@ -39,7 +88,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.err.println("Sentencia delete no ejecutada");
+            System.err.println("No se ha podido eliminar");
             return false;
         }
     }
@@ -61,10 +110,10 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setDouble(4, videogame.getPrice());
             pStatement.setInt(5, videogame.getId());
             pStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia (Juego actualizado)");
+            JOptionPane.showMessageDialog(null,"Se han actualizado los datos del juego");
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"No se ha ejecutado la sentencia (Juego no actualizado)");
+            JOptionPane.showMessageDialog(null,"Juego no actualizado / Error");
 
             return false;
         }
@@ -120,7 +169,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
             StringBuilder sb = new StringBuilder();
             sb.append("=======================").append("\n");
 
-            for (Videogames v : videogamesList) {
+            for (Videogames v : videogamesList.stream().sorted(Comparator.comparing(Videogames::getId)).toList()) {
                 sb.append(v).append("\n");
                 sb.append("=======================").append("\n");
             }

@@ -1,53 +1,211 @@
-/* Estilo general del contenedor */
 .root {
-    -fx-background-color: #f4f7f6; /* Un gris muy suave casi blanco */
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom right,
+                    #0f172a,
+                    #111827,
+                    #1e293b
+            );
+
+    -fx-font-family: "Segoe UI";
 }
 
-/* Estilo para los campos de texto y contraseña */
-.text-field, .password-field {
-    -fx-background-color: white;
-    -fx-background-radius: 8;
-    -fx-border-color: #dcdde1;
-    -fx-border-radius: 8;
+/* PANEL */
+
+.login-panel {
+
+    -fx-background-color: rgba(17,24,39,0.95);
+
+    -fx-background-radius: 14;
+
+    -fx-border-color: #1e293b;
     -fx-border-width: 1;
-    -fx-padding: 10 15;
-    -fx-font-size: 14px;
-    -fx-prompt-text-fill: #95a5a6;
-    -fx-transition: all 0.3s;
+
+    -fx-border-radius: 14;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.35),
+            20,
+            0,
+            0,
+            6
+    );
 }
 
-/* Efecto cuando haces clic en el input */
-.text-field:focused, .password-field:focused {
-    -fx-border-color: #3498db; /* Azul moderno */
-    -fx-background-color: #ffffff;
-    -fx-effect: dropshadow(three-pass-box, rgba(52, 152, 219, 0.2), 10, 0, 0, 0);
-}
+/* TITULO */
 
-/* Estilo para el botón */
-.button {
-    -fx-background-color: #3498db;
-    -fx-text-fill: white;
-    -fx-font-size: 15px;
+.login-title {
+
+    -fx-font-size: 34px;
     -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-padding: 10 30;
+
+    -fx-text-fill: #f8fafc;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(255,255,255,0.08),
+            8,
+            0,
+            0,
+            1
+    );
+}
+
+/* CAMPOS */
+
+.login-field {
+
+    -fx-background-color: transparent;
+
+    -fx-control-inner-background: #1e293b;
+
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #94a3b8;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-padding: 10;
+
+    -fx-font-size: 14px;
+}
+.login-field:focused {
+
+    -fx-border-color: #64748b;
+
+    -fx-control-inner-background: #273549;
+}
+/* BOTON LOGIN */
+
+.login-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #273549,
+                    #1e293b
+            );
+
+    -fx-text-fill: #f8fafc;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-padding: 10 25;
+
     -fx-cursor: hand;
 }
 
-.button:hover {
-    -fx-background-color: #2980b9; /* Oscurece un poco al pasar el ratón */
+.login-button:hover {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #334155,
+                    #273549
+            );
+
+    -fx-text-fill: white;
 }
 
-.button:pressed {
-    -fx-scale-x: 0.95;
-    -fx-scale-y: 0.95;
+/* BOTON REGISTRO */
+
+.secondary-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #273549,
+                    #1e293b
+            );
+
+    -fx-text-fill: #cbd5e1;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-font-weight: bold;
+
+    -fx-cursor: hand;
 }
 
-/* Estilo para la etiqueta de confirmación */
-.label {
-    -fx-text-fill: #7f8c8d;
+.secondary-button:hover {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #334155,
+                    #273549
+            );
+
+    -fx-text-fill: white;
+}
+
+/* BOTON SALIR */
+
+.exit-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #3b1d2a,
+                    #2b1620
+            );
+
+    -fx-text-fill: #fca5a5;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-border-color: #7f1d1d;
+    -fx-border-width: 1;
+}
+
+.exit-button:hover {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #4a2433,
+                    #3b1d2a
+            );
+
+    -fx-text-fill: white;
+}
+
+/* SEPARADOR */
+
+.separator-line {
+
+    -fx-pref-width: 280;
+}
+
+.separator-line .line {
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+}
+
+/* MENSAJES */
+
+.confirm-label {
+
+    -fx-text-fill: #94a3b8;
+
     -fx-font-size: 13px;
 }
-
-

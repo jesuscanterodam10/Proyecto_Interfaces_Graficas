@@ -6,21 +6,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20" stylesheets="@cs/add.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller2">
+<VBox alignment="CENTER" prefHeight="472.0" prefWidth="646.0" spacing="20" styleClass="add-panel" stylesheets="@cs/add.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller2">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
-   <Label text="Insertar datos" style="-fx-font-size: 30px" textFill="WHITE" />
+
+    <Label styleClass="screen-title" text="INSERTAR VIDEOJUEGO" />
+
+    <Separator styleClass="separator-line" />
 
     <HBox alignment="CENTER" spacing="10">
-        <TextField fx:id="idAdd" promptText="id (1,2,3...)" />
-        <Button onAction="#numberRandom" text="Id.Random" />
 
-        <TextField fx:id="nameAdd" promptText="Nombre del juego..." />
-        <TextField fx:id="storageMb" promptText="MB de almc (1,2,3...)" />
-        <DatePicker fx:id="realaseDate" promptText="Fecha de lanzamiento" />
-        <ComboBox fx:id="pegi" promptText="PEGI">
+        <CheckBox fx:id="autoIdSwitch" onAction="#changerCheck" styleClass="modern-check" text="ID automático" />
+
+        <TextField fx:id="idAdd" promptText="ID" styleClass="input-field" />
+
+        <Button fx:id="idRandom" onAction="#numberRandom" styleClass="secondary-button" text="Aleatorio" />
+
+    </HBox>
+
+    <HBox alignment="CENTER" spacing="10">
+
+        <TextField fx:id="nameAdd" prefWidth="250" promptText="Nombre del juego" styleClass="input-field" />
+
+        <TextField fx:id="storageMb" promptText="Almacenamiento (MB)" styleClass="input-field" />
+
+    </HBox>
+
+    <HBox alignment="CENTER" spacing="10">
+
+        <DatePicker fx:id="realaseDate" styleClass="input-field" />
+
+        <ComboBox fx:id="pegi" promptText="PEGI" styleClass="input-field">
+
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="18" />
@@ -31,15 +50,19 @@
                     <String fx:value="TP" />
                 </FXCollections>
             </items>
+
         </ComboBox>
-        <TextField fx:id="price" promptText="Precio" />
+
+        <TextField fx:id="price" promptText="Precio (€)" styleClass="input-field" />
+
     </HBox>
 
-    <HBox alignment="CENTER" spacing="20">
-        <Button onAction="#buttonForAdd" text="Insertar" />
-    </HBox>
-     <Button onAction="#backButtonMenu" text="Menú" />
+    <Separator styleClass="separator-line" />
 
-    <Label fx:id="userText" textFill="WHITE" />
+    <Button onAction="#buttonForAdd" prefWidth="200" styleClass="primary-button" text="INSERTAR" />
+
+    <Button onAction="#backButtonMenu" prefWidth="200" styleClass="back-button" text="VOLVER AL MENÚ" />
+
+    <Label fx:id="userText" styleClass="info-label" />
 
 </VBox>

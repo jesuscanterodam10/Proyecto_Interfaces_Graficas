@@ -11,9 +11,9 @@
     -fx-font-family: "Segoe UI";
 }
 
-/* PANEL PRINCIPAL */
+/* PANEL */
 
-.menu-panel {
+.adduser-panel {
 
     -fx-background-color: rgba(17,24,39,0.95);
 
@@ -36,26 +36,45 @@
 
 /* TITULO */
 
-.menu-title {
+.adduser-title {
 
-    -fx-font-size: 34px;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
 
     -fx-text-fill: #f8fafc;
-
-    -fx-effect: dropshadow(
-            gaussian,
-            rgba(255,255,255,0.08),
-            8,
-            0,
-            0,
-            1
-    );
 }
 
-/* BOTONES PRINCIPALES */
+/* INPUTS */
 
-.menu-button {
+.input-field {
+
+    -fx-control-inner-background: #1e293b;
+
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #94a3b8;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-padding: 10;
+
+    -fx-font-size: 14px;
+}
+
+.input-field:focused {
+
+    -fx-control-inner-background: #273549;
+
+    -fx-border-color: #64748b;
+    -fx-border-width: 1.5;
+}
+
+/* BOTON AÑADIR */
+
+.add-button {
 
     -fx-background-color:
             linear-gradient(
@@ -64,9 +83,8 @@
                     #1e293b
             );
 
-    -fx-text-fill: #e2e8f0;
+    -fx-text-fill: white;
 
-    -fx-font-size: 14px;
     -fx-font-weight: bold;
 
     -fx-background-radius: 10;
@@ -75,12 +93,10 @@
     -fx-border-color: #334155;
     -fx-border-width: 1;
 
-    -fx-padding: 12;
-
     -fx-cursor: hand;
 }
 
-.menu-button:hover {
+.add-button:hover {
 
     -fx-background-color:
             linear-gradient(
@@ -88,15 +104,6 @@
                     #334155,
                     #273549
             );
-
-    -fx-border-color: #475569;
-
-    -fx-text-fill: white;
-}
-
-.menu-button:pressed {
-
-    -fx-background-color: #1e293b;
 }
 
 /* BOTON VOLVER */
@@ -118,7 +125,6 @@
     -fx-border-radius: 10;
 
     -fx-border-color: #7f1d1d;
-    -fx-border-width: 1;
 }
 
 .back-button:hover {
@@ -133,28 +139,26 @@
     -fx-text-fill: white;
 }
 
-/* SEPARADORES */
+/* MENSAJES */
+
+.confirm-label {
+
+    -fx-text-fill: #94a3b8;
+
+    -fx-font-size: 13px;
+}
+
+/* SEPARADOR */
 
 .separator-line {
 
-    -fx-pref-width: 340;
+    -fx-pref-width: 300;
 }
 
 .separator-line .line {
 
     -fx-border-color: #334155;
     -fx-border-width: 1;
-}
-
-/* TEXTO DEL USUARIO */
-
-.user-label {
-
-    -fx-text-fill: #94a3b8;
-
-    -fx-font-size: 13px;
-
-    -fx-font-style: italic;
 }
 .button {
 
