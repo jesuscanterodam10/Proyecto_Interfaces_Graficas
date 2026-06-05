@@ -1,0 +1,170 @@
+.root {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom right,
+                    #0f172a,
+                    #111827,
+                    #1e293b
+            );
+
+    -fx-font-family: "Segoe UI";
+}
+
+/* PANEL */
+
+.adduser-panel {
+
+    -fx-background-color: rgba(17,24,39,0.95);
+
+    -fx-background-radius: 14;
+
+    -fx-border-color: #1e293b;
+    -fx-border-width: 1;
+
+    -fx-border-radius: 14;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.35),
+            20,
+            0,
+            0,
+            6
+    );
+}
+
+/* TITULO */
+
+.adduser-title {
+
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #f8fafc;
+}
+
+/* INPUTS */
+
+.input-field {
+
+    -fx-control-inner-background: #1e293b;
+
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #94a3b8;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-padding: 10;
+
+    -fx-font-size: 14px;
+}
+
+.input-field:focused {
+
+    -fx-control-inner-background: #273549;
+
+    -fx-border-color: #64748b;
+    -fx-border-width: 1.5;
+}
+
+/* BOTON AÑADIR */
+
+.add-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #273549,
+                    #1e293b
+            );
+
+    -fx-text-fill: white;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-cursor: hand;
+}
+
+.add-button:hover {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #334155,
+                    #273549
+            );
+}
+
+/* BOTON VOLVER */
+
+.back-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #3b1d2a,
+                    #2b1620
+            );
+
+    -fx-text-fill: #fca5a5;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-border-color: #7f1d1d;
+}
+
+.back-button:hover {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #4a2433,
+                    #3b1d2a
+            );
+
+    -fx-text-fill: white;
+}
+
+/* MENSAJES */
+
+.confirm-label {
+
+    -fx-text-fill: #94a3b8;
+
+    -fx-font-size: 13px;
+}
+
+/* SEPARADOR */
+
+.separator-line {
+
+    -fx-pref-width: 300;
+}
+
+.separator-line .line {
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+}
+.button {
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}

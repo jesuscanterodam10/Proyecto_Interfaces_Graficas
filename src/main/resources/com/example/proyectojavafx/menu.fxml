@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER"
+      prefHeight="322.0"
+      prefWidth="472.0"
+      spacing="20.0"
+      stylesheets="@cs/menu.css"
+      styleClass="menu-panel"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.proyectojavafx.Controller.Controller2">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="MENÚ PRINCIPAL" styleClass="menu-title"/>
+
+    <Separator styleClass="separator-line"/>
+
+    <Button mnemonicParsing="false"
+            onAction="#addVideogame"
+            prefWidth="341.0"
+            text="INSERTAR"
+            styleClass="menu-button"/>
+
+    <Button mnemonicParsing="false"
+            onAction="#deleteByID"
+            prefWidth="341.0"
+            text="ELIMINAR"
+            styleClass="menu-button"/>
+
+    <Button mnemonicParsing="false"
+            onAction="#updateGame"
+            prefWidth="341.0"
+            text="ACTUALIZAR"
+            styleClass="menu-button"/>
+
+    <Button mnemonicParsing="false"
+            onAction="#searchID"
+            prefWidth="341.0"
+            text="BUSCAR"
+            styleClass="menu-button"/>
+
+    <Button mnemonicParsing="false"
+            onAction="#showAll"
+            prefWidth="341.0"
+            text="MOSTRAR"
+            styleClass="menu-button"/>
+
+    <Separator styleClass="separator-line"/>
+
+    <Button mnemonicParsing="false"
+            onAction="#backButton"
+            text="VOLVER"
+            styleClass="back-button"/>
+
+    <Label fx:id="userText" styleClass="user-label"/>
+
+</VBox>

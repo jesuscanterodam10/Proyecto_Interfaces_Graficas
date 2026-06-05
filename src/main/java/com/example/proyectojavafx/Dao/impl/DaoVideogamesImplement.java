@@ -1,0 +1,184 @@
+package com.example.proyectojavafx.Dao.impl;
+
+import com.example.proyectojavafx.Dao.DaoVideogames;
+import com.example.proyectojavafx.DataBase.ConexionSingleton;
+import com.example.proyectojavafx.Models.Videogames;
+
+import javax.swing.*;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+public class DaoVideogamesImplement implements DaoVideogames {
+    static Connection connection = ConexionSingleton.getInstance();
+    String sql;
+
+    @Override
+    public Videogames insertarAutoIdGame(Videogames videogame){
+        int i;
+        sql = "INSERT INTO videogames VALUES (?, ?, ?, ?, ?, ?);";
+        try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
+            i = idAuto();
+            pStatement.setInt(1, idAuto());
+            pStatement.setString(2, videogame.getName());
+            pStatement.setDouble(3, videogame.getStorage());
+            pStatement.setString(4, videogame.getRealaseDate().toString());
+            pStatement.setString(5, videogame.getPegi());
+            pStatement.setDouble(6, videogame.getPrice());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Se han introducido los datos");
+            return new Videogames(i, videogame.getName() ,videogame.getStorage(), videogame.getRealaseDate(), videogame.getPegi(), videogame.getPrice());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se han introducido los datos / Datos invalidos");
+        }
+        return null;
+    }
+
+    public static int idAuto() {
+        int j = 0;
+        String sql = "SELECT id FROM videogames";
+
+        try (Statement st = connection.createStatement()) {
+            ResultSet rSt = st.executeQuery(sql);
+            while (rSt.next()) {
+                int x = rSt.getInt(1);
+                for (; j < 2147483646; ) {
+                    if (j != x) {
+                        return j;
+                    }
+                    break;
+                }
+                j++;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return j;
+
+    }
+
+
+    @Override
+    public Videogames insertVideogame(Videogames videogame) {
+        sql = "INSERT INTO videogames VALUES (?, ?, ?, ?, ?, ?);";
+        try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
+            pStatement.setInt(1, videogame.getId());
+            pStatement.setString(2, videogame.getName());
+            pStatement.setDouble(3, videogame.getStorage());
+            pStatement.setString(4, videogame.getRealaseDate().toString());
+            pStatement.setString(5, videogame.getPegi());
+            pStatement.setDouble(6, videogame.getPrice());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se han introducido los datos");
+            return new Videogames(videogame.getId(), videogame.getName(), videogame.getStorage(), videogame.getRealaseDate(), videogame.getPegi(), videogame.getPrice());
+        }catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se han introducido los datos / Datos invalidos");
+        }
+        return null;
+    }
+
+    @Override
+    public boolean removeVideogame(int id) {
+        sql = "DELETE FROM videogames WHERE id = ?;";
+        try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
+            pStatement.setInt(1, id);
+            pStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("No se ha podido eliminar");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateVideogame(Videogames videogame) {
+        sql = """ 
+                UPDATE videogames SET 
+                name = ?,
+                storage = ?,
+                pegi = ?,
+                price = ? 
+                WHERE id = ?;
+                """;
+        try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
+            pStatement.setString(1, videogame.getName());
+            pStatement.setDouble(2, videogame.getStorage());
+            pStatement.setString(3, videogame.getPegi());
+            pStatement.setDouble(4, videogame.getPrice());
+            pStatement.setInt(5, videogame.getId());
+            pStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Se han actualizado los datos del juego");
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Juego no actualizado / Error");
+
+            return false;
+        }
+    }
+
+    @Override
+    public Videogames searchForID(int id) {
+        Videogames videogame = null;
+        sql = "SELECT * FROM videogames WHERE id = ?;";
+        try (PreparedStatement pStatement = connection.prepareStatement(sql)) {
+            pStatement.setInt(1, id);
+            ResultSet rSet = pStatement.executeQuery();
+            while (rSet.next()) {
+                String name = rSet.getString(2);
+                double storage = rSet.getDouble(3);
+                String date = rSet.getString(4);
+                LocalDate dateF = LocalDate.parse(date);
+                String pegi = rSet.getString(5);
+                double price = rSet.getDouble(6);
+                videogame = new Videogames(id, name, storage, dateF, pegi, price);
+            }
+            return videogame;
+        } catch (SQLException e) {
+            System.err.println("No se ha podido encontrar el videojuego con ese ID");
+        }
+        return null;
+    }
+
+    @Override
+    public String showAll() {
+        List<Videogames> videogamesList = new ArrayList<>();
+        Connection conec = ConexionSingleton.getInstance();
+        String sql = "SELECT * FROM videogames";
+        try (Statement st = conec.createStatement()){
+            ResultSet r = st.executeQuery(sql);
+            int id = 99;
+            String name = " ";
+            double storge = 99;
+            LocalDate l = null;
+            String pegi = " ";
+            double price = 99;
+
+
+            while(r.next()){
+                id = r.getInt(1);
+                name = r.getString(2);
+                storge = r.getDouble(3);
+                l = LocalDate.parse(r.getString(4));
+                pegi = r.getString(5);
+                price = r.getDouble(6);
+                videogamesList.add(new Videogames(id,name,storge,l,pegi,price));
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append("=======================").append("\n");
+
+            for (Videogames v : videogamesList.stream().sorted(Comparator.comparing(Videogames::getId)).toList()) {
+                sb.append(v).append("\n");
+                sb.append("=======================").append("\n");
+            }
+            return sb.toString();
+
+
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+        return null;
+    }
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER"
+      prefHeight="410.0"
+      prefWidth="408.0"
+      spacing="20.0"
+      stylesheets="@cs/LoginCss.css"
+      styleClass="login-panel"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.proyectojavafx.Controller.Controller1">
+
+    <padding>
+        <Insets top="20.0"
+                right="20.0"
+                bottom="20.0"
+                left="20.0"/>
+    </padding>
+
+    <Button mnemonicParsing="false"
+            onAction="#adminSecret"
+            prefHeight="41.0"
+            prefWidth="288.0"
+            text="¿No tienes Usuario?"
+            styleClass="secondary-button"/>
+
+    <Separator styleClass="separator-line"/>
+
+    <Label text="LOGIN"
+           styleClass="login-title"/>
+
+    <TextField fx:id="introUser"
+               promptText="Usuario..."
+               styleClass="login-field"/>
+
+    <PasswordField fx:id="introPassword"
+                   promptText="Contraseña..."
+                   styleClass="login-field"/>
+
+    <Label fx:id="confirm" wrapText="true"
+           styleClass="confirm-label"/>
+
+    <Button text="LOG IN"
+            onAction="#logButton"
+            prefWidth="180"
+            styleClass="login-button"/>
+
+    <Button text="SALIR"
+            onAction="#close"
+            prefWidth="180"
+            styleClass="exit-button"/>
+
+</VBox>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER"
+      prefHeight="164.0"
+      prefWidth="151.0"
+      spacing="15.0"
+      stylesheets="@cs/allShowC.css"
+      styleClass="show-panel"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.proyectojavafx.Controller.Controller2">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="DATOS"
+           styleClass="show-title"/>
+
+    <ScrollPane fitToWidth="true"
+                prefHeight="260"
+                prefWidth="420"
+                styleClass="scroll-box">
+
+        <content>
+            <Label fx:id="all"
+                   text="..."
+                   wrapText="true"
+                   styleClass="data-label"/>
+        </content>
+
+    </ScrollPane>
+
+    <Button text="MOSTRAR"
+            onAction="#list"
+            styleClass="primary-button"/>
+
+    <Button text="MENÚ"
+            onAction="#backButtonMenu"
+            styleClass="back-button"/>
+
+    <Label fx:id="userText"
+           styleClass="info-label"/>
+
+</VBox>

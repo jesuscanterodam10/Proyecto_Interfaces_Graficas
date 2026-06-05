@@ -1,0 +1,155 @@
+.root {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom right,
+                    #0f172a,
+                    #111827,
+                    #1e293b
+            );
+
+    -fx-font-family: "Segoe UI";
+}
+
+/* PANEL */
+
+.delete-panel {
+
+    -fx-background-color: rgba(17,24,39,0.95);
+
+    -fx-background-radius: 14;
+
+    -fx-border-color: #1e293b;
+    -fx-border-width: 1;
+
+    -fx-border-radius: 14;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.35),
+            20,
+            0,
+            0,
+            6
+    );
+}
+
+/* TITULO */
+
+.delete-title {
+
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #f8fafc;
+}
+
+/* INPUT */
+
+.input-field,
+.combo-box {
+
+    -fx-background-color: #1e293b;
+
+    -fx-text-fill: white;
+
+    -fx-prompt-text-fill: #94a3b8;
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+
+    -fx-padding: 8;
+}
+
+/* COMBOBOX INTERNO */
+
+.combo-box .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+}
+
+/* BOTON ELIMINAR (PELIGRO) */
+
+.danger-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #7f1d1d,
+                    #3b1d2a
+            );
+
+    -fx-text-fill: #fecaca;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+
+    -fx-border-color: #991b1b;
+    -fx-border-width: 1;
+
+    -fx-cursor: hand;
+}
+
+.danger-button:hover {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #991b1b,
+                    #4a2433
+            );
+
+    -fx-text-fill: white;
+}
+
+/* BOTON VOLVER */
+
+.back-button {
+
+    -fx-background-color:
+            linear-gradient(
+                    to bottom,
+                    #273549,
+                    #1e293b
+            );
+
+    -fx-text-fill: #e2e8f0;
+
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+
+    -fx-border-color: #334155;
+    -fx-border-width: 1;
+}
+
+.back-button:hover {
+
+    -fx-background-color:
+            #334155;
+}
+
+/* INFO LABEL */
+
+.info-label {
+
+    -fx-text-fill: #94a3b8;
+
+    -fx-font-size: 12px;
+}
+
+.combo-box .list-view {
+    -fx-background-color: #1e293b;
+}
+.button {
+
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+}

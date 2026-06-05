@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER"
+      prefHeight="168.0"
+      prefWidth="179.0"
+      spacing="15.0"
+      stylesheets="@cs/search.css"
+      styleClass="search-panel"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.proyectojavafx.Controller.Controller2">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="BUSCADOR"
+           styleClass="search-title"/>
+
+    <ComboBox fx:id="comboxIds"
+              promptText="Selecciona ID"
+              styleClass="input-field"/>
+
+    <Button text="BUSCAR"
+            onAction="#buttonForSearchID"
+            styleClass="primary-button"/>
+
+    <VBox styleClass="result-box" alignment="CENTER_LEFT">
+
+        <Label fx:id="caract"
+               text="..."
+               wrapText="true"
+               styleClass="result-text"/>
+
+    </VBox>
+
+    <Button text="MENÚ"
+            onAction="#backButtonMenu"
+            styleClass="back-button"/>
+
+    <Label fx:id="userText"
+           styleClass="info-label"/>
+
+</VBox>

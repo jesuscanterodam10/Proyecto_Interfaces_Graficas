@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER"
+      prefHeight="355.0"
+      prefWidth="826.0"
+      spacing="20.0"
+      stylesheets="@cs/UpdateCs.css"
+      styleClass="update-panel"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.proyectojavafx.Controller.Controller2">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="ACTUALIZAR DATOS"
+           styleClass="update-title"/>
+
+    <Separator styleClass="separator-line"/>
+
+    <ComboBox fx:id="comboxIds"
+              promptText="Selecciona ID"
+              styleClass="input-field"/>
+
+    <!-- CAJA DE FORMULARIO -->
+    <VBox styleClass="form-box" spacing="12">
+
+        <HBox spacing="10" alignment="CENTER">
+
+            <TextField fx:id="nameAdd"
+                       promptText="Nombre del juego"
+                       styleClass="input-field"/>
+
+            <TextField fx:id="storageMb"
+                       promptText="Almacenamiento (MB)"
+                       styleClass="input-field"/>
+
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER">
+
+            <ComboBox fx:id="pegi"
+                      promptText="PEGI"
+                      styleClass="input-field">
+
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="18"/>
+                        <String fx:value="16"/>
+                        <String fx:value="12"/>
+                        <String fx:value="7"/>
+                        <String fx:value="3"/>
+                        <String fx:value="TP"/>
+                    </FXCollections>
+                </items>
+
+            </ComboBox>
+
+            <TextField fx:id="price"
+                       promptText="Precio"
+                       styleClass="input-field"/>
+
+        </HBox>
+
+    </VBox>
+
+    <Button text="ACTUALIZAR"
+            onAction="#buttonForUpdate"
+            styleClass="primary-button"/>
+
+    <Button text="MENÚ"
+            onAction="#backButtonMenu"
+            styleClass="back-button"/>
+
+    <Label fx:id="userText"
+           styleClass="info-label"/>
+
+</VBox>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="450.0" prefWidth="408.0" spacing="20.0" styleClass="adduser-panel" stylesheets="@cs/AddUser.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectojavafx.Controller.Controller1">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label styleClass="adduser-title" text="NUEVO USUARIO" />
+
+    <Separator styleClass="separator-line" />
+
+    <TextField fx:id="introUserA" prefHeight="42" prefWidth="300" promptText="Nombre de usuario..." styleClass="input-field" />
+
+    <PasswordField fx:id="introPasswordA" prefHeight="42" prefWidth="300" promptText="Contraseña..." styleClass="input-field" />
+
+    <Label fx:id="confirm" styleClass="confirm-label" />
+
+    <Button onAction="#addUser" prefWidth="180" styleClass="add-button" text="AÑADIR" />
+
+    <Button onAction="#back" prefWidth="180" styleClass="back-button" text="VOLVER" />
+
+</VBox>
