@@ -81,7 +81,7 @@ public class Controller1 {
             confirm.setText("Hay un boton para añadir usuario... por si no te has dado cuenta... (Usuario incorrecto)");
         }
         else if (!warning){
-            confirm.setText("Usuario incorrecto");
+            confirm.setText("Usuario o contraseña incorrecto");
             tries++;
         }
 
