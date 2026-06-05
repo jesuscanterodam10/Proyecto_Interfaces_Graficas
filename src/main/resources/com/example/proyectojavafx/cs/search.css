@@ -121,17 +121,17 @@
     -fx-background-color:
             linear-gradient(
                     to bottom,
-                    #273549,
-                    #1e293b
+                    #3b1d2a,
+                    #2b1620
             );
 
-    -fx-text-fill: #e2e8f0;
+    -fx-text-fill: #fca5a5;
 
     -fx-font-weight: bold;
 
     -fx-background-radius: 10;
 
-    -fx-border-color: #334155;
+    -fx-border-color: #7f1d1d;
 }
 
 /* INFO */

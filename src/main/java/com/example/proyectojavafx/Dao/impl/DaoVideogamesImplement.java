@@ -28,10 +28,10 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setString(5, videogame.getPegi());
             pStatement.setDouble(6, videogame.getPrice());
             pStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia");
+            JOptionPane.showMessageDialog(null,"Se han introducido los datos");
             return new Videogames(i, videogame.getName() ,videogame.getStorage(), videogame.getRealaseDate(), videogame.getPegi(), videogame.getPrice());
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se ha ejecutado la sentencia / Datos invalidos");
+            JOptionPane.showMessageDialog(null, "No se han introducido los datos / Datos invalidos");
         }
         return null;
     }
@@ -72,10 +72,10 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setString(5, videogame.getPegi());
             pStatement.setDouble(6, videogame.getPrice());
             pStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha ejecutado la sentencia");
+            JOptionPane.showMessageDialog(null, "Se han introducido los datos");
             return new Videogames(videogame.getId(), videogame.getName(), videogame.getStorage(), videogame.getRealaseDate(), videogame.getPegi(), videogame.getPrice());
         }catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se ha ejecutado la sentencia / Datos invalidos");
+            JOptionPane.showMessageDialog(null, "No se han introducido los datos / Datos invalidos");
         }
         return null;
     }
@@ -88,7 +88,7 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
-            System.err.println("Sentencia delete no ejecutada");
+            System.err.println("No se ha podido eliminar");
             return false;
         }
     }
@@ -110,10 +110,10 @@ public class DaoVideogamesImplement implements DaoVideogames {
             pStatement.setDouble(4, videogame.getPrice());
             pStatement.setInt(5, videogame.getId());
             pStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Se ha ejecutado la sentencia (Juego actualizado)");
+            JOptionPane.showMessageDialog(null,"Se han actualizado los datos del juego");
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,"No se ha ejecutado la sentencia (Juego no actualizado)");
+            JOptionPane.showMessageDialog(null,"Juego no actualizado / Error");
 
             return false;
         }

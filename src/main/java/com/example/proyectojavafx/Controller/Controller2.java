@@ -121,8 +121,11 @@ public class Controller2 {
             stage.show();
 
 
-        }catch (NumberFormatException | IOException e){
+        }
+        catch (NumberFormatException | IOException e){
             warning(2);
+        } catch (RuntimeException e) {
+            warning(1);
         }
 
     }
@@ -142,9 +145,12 @@ public class Controller2 {
 
     @FXML
     public void buttonForAdd() {
-
         try {
+            if(storageMb.getText().isEmpty() || price.getText().isEmpty() || nameAdd.getText().isEmpty() || realaseDate.getValue() == null || pegi.getValue() == null){
+                throw  new RuntimeException();
+            }
             if (!autoIdSwitch.isSelected()) {
+                if(idAdd.getText().isEmpty()){throw  new RuntimeException();}
                 vS.addVideogame(Integer.parseInt(idAdd.getText()), nameAdd.getText(),
                         correctFormat(storageMb.getText()), realaseDate.getValue(),
                         pegi.getValue().toString(), correctFormat(price.getText()));
